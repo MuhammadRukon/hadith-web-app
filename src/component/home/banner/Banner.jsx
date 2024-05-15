@@ -1,5 +1,6 @@
 import React from "react";
-import banner from "./../../assets/banner.svg";
+import banner from "./../../../assets/banner.svg";
+import toast from "react-hot-toast";
 
 const Banner = () => {
   return (
@@ -12,12 +13,24 @@ const Banner = () => {
       ></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md lg:max-w-3xl ">
-          <h1 className="text-6xl font-bold text-[#5ab270]">
+          <h1 className="text-4xl lg:text-6xl font-secondary font-bold text-[#5ab270]">
             Find your favourite <span className="text-[#f3c556]">hadith</span>
           </h1>
           <label className="input w-[75%] h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
-            <input type="text" className="grow bg-white" placeholder="Search" />
-            <button className="btn flex items-center gap-1 text-white pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270]">
+            <input
+              type="text"
+              className="grow text-[#0e1037] bg-white"
+              placeholder="Search"
+            />
+            <button
+              onClick={() =>
+                toast("searching option is under development.", {
+                  duration: 2000,
+                  id: "id",
+                })
+              }
+              className="btn flex items-center gap-1 text-white pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 16 16"
@@ -33,7 +46,7 @@ const Banner = () => {
               Search
             </button>
           </label>
-          <p className="text-[#0e1037] text-xl font-semibold mt-8">
+          <p className="text-[#0e1037] text-lg lg:text-xl font-semibold mt-8">
             He said, The Messenger of Allah (PBUH) said: When a Muslim performs
             ablution properly, faces Allah with concentration and prays two
             rak'ahs, Paradise is guaranteed for him.

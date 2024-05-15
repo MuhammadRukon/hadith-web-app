@@ -5,6 +5,8 @@ export default {
     extend: {
       fontFamily: {
         primary: "'Nunito', sans-serif",
+        secondary: "'Amaranth', sans-serif",
+        logo: "'Lobster Two', cursive",
       },
     },
   },
