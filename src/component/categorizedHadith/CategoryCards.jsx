@@ -3,9 +3,11 @@ import Card from "./../bookOfHadith/Card";
 
 const CategoryCards = () => {
   const [categories, setCategories] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("/category.json");
+
       const data = await res.json();
       if (data?.length > 0) {
         setCategories(data);
