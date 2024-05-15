@@ -2,7 +2,6 @@ import Logo from "../logo/Logo";
 import NavItems from "./NavItems";
 import { HiOutlineBell } from "react-icons/hi2";
 import profileImg from "./../../assets/profileImg.png";
-import { BiSolidDonateHeart } from "react-icons/bi";
 
 const Navbar = () => {
   return (
@@ -22,10 +21,6 @@ const Navbar = () => {
                 <img src={profileImg} alt="profile-img" />
               </div>
             </div>
-            <button className="btn flex items-center gap-1 text-white px-5 h-fit min-h-0 text-base font-bold rounded-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] ">
-              <BiSolidDonateHeart size={20} />
-              Support
-            </button>
           </div>
         </div>
       </div>
