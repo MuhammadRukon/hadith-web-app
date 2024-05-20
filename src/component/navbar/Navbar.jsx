@@ -6,7 +6,7 @@ import profileImg from "./../../assets/profileImg.png";
 const Navbar = () => {
   return (
     <>
-      <div className="text-[#0e1037] bg-[#fff9ef] shadow-[0_2px_10px_rgba(0,0,0,0.12)] fixed top-0 left-0 w-full z-20">
+      <div className="text-[#0e1037] bg-[#fff9ef] shadow-[0_2px_10px_rgba(0,0,0,0.12)] fixed top-0 left-0 w-full z-50">
         <div className="xl:container mx-auto px-8 flex justify-between items-center">
           <Logo />
           <NavItems />

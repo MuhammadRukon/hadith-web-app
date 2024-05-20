@@ -14,9 +14,8 @@ const HomePage = () => {
   },[])
   return (
     <MainLayout>
-      <div data-aos="zoom-in">
+  
       <Banner />
-      </div>
     
       <BookOfHadith />
       <CategorizedHadith />

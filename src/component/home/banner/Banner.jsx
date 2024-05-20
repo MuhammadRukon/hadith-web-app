@@ -4,14 +4,16 @@ import toast from "react-hot-toast";
 
 const Banner = () => {
   return (
-    <div className="hero mt-[64px] bg-[#fff9ef] min-h-[70vh]">
+    <div  className="bg-[#fff9ef] relative overflow-hidden">
+    
+    <div  className="hero mt-[34px] min-h-[70vh]">
       <div
         style={{
           backgroundImage: `url(${banner})`,
         }}
-        className="hero-overlay bg-no-repeat bg-center opacity-10 bg-opacity-60"
+        className="hero-overlay bg-transparent fixed z-0 bg-no-repeat bg-center opacity-10 bg-opacity-60"
       ></div>
-      <div className="hero-content text-center text-neutral-content">
+      <div data-aos="zoom-in" data-aos-duration="900" className="hero-content text-center text-neutral-content">
         <div className="max-w-md lg:max-w-3xl ">
           <h1 className="text-4xl lg:text-6xl font-secondary font-bold text-[#5ab270]">
             Find your favourite <span className="text-[#f3c556]">hadith</span>
@@ -54,6 +56,8 @@ const Banner = () => {
         </div>
       </div>
     </div>
+    </div>
+       
   );
 };
 
