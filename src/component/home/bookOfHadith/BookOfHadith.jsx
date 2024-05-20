@@ -1,8 +1,9 @@
-import React from "react";
+
 import Container from "../../container/Container";
 import HadithCards from "../../bookOfHadith/HadithCards";
 
 const BookOfHadithPage = () => {
+
   return (
     <Container>
       <div className="text-center pt-20 pb-16">
