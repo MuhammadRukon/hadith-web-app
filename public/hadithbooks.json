@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Sahih Bukhari",
+    "hadith_range": 7563
+  },
+  {
+    "name": "Sahih Muslim",
+    "hadith_range": 7453
+  },
+  {
+    "name": "Sunan An-Nasa'i",
+    "hadith_range": 5758
+  },
+  {
+    "name": "Sunan Abu Dawud",
+    "hadith_range": 5274
+  },
+  {
+    "name": "Jame' at-Tirmidhi",
+    "hadith_range": 3956
+  },
+  {
+    "name": "Sunan Ibn Majah",
+    "hadith_range": 4341
+  }
+]

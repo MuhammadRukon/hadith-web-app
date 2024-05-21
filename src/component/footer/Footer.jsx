@@ -1,12 +1,19 @@
 import React from "react";
+import Logo from "../logo/Logo";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="xl:container mx-auto px-8 mt-6 flex justify-center  font-semibold text-sm text-gray-600 font-primary">
-      <p className="border-t w-full pt-3 text-center">
-        Hadith Web App | Project of Amena & Bristy
-      </p>
-    </div>
+    <footer className="footer bg-[#5ab270] dark:bg-stone-700 footer-center py-3 sticky z-10 text-white">
+      <aside>
+        <p className="font-bold text-xl">
+          <Link to={"/"}>
+            <Logo footer={true} />
+          </Link>
+        </p>
+        <p>Copyright © 2024 - All right reserved</p>
+      </aside>
+    </footer>
   );
 };
 
