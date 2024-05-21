@@ -7,13 +7,13 @@ import { useState } from "react";
 import { MdOutlineLightMode } from "react-icons/md";
 
 const Navbar = () => {
-  const mainDiv = document.getElementById("main-div");
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
-
+  
   const handleThemeChange = () => {
     const color = theme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", color);
-
+    
+    const mainDiv = document.getElementById("main-div");
     if (theme === "dark") {
       mainDiv.classList.remove("dark");
       mainDiv.classList.add("light");
