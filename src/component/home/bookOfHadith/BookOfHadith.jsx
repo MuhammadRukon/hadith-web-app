@@ -1,11 +1,12 @@
-import React from "react";
+
 import Container from "../../container/Container";
 import HadithCards from "../../bookOfHadith/HadithCards";
 
 const BookOfHadithPage = () => {
+
   return (
     <Container>
-      <div className="text-center pt-20 pb-16">
+      <div className="text-center dark:text-white dark:text dark:bg-stone-700 pt-20 pb-16 sticky z-10 bg-[#fefdf8]">
         <h2 className="text-3xl lg:text-5xl font-secondary font-medium">
           Books of <span className="text-[#f3c556]">Hadith</span>
         </h2>
