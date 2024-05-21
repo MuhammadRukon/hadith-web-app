@@ -4,24 +4,24 @@ import toast from "react-hot-toast";
 
 const Banner = () => {
   return (
-    <div  className="bg-[#fff9ef] relative overflow-hidden">
+    <div  className="bg-[#fff9ef] dark:bg-stone-700 relative overflow-hidden">
     
     <div  className="hero mt-[34px] min-h-[70vh]">
       <div
         style={{
           backgroundImage: `url(${banner})`,
         }}
-        className="hero-overlay bg-transparent fixed z-0 bg-no-repeat bg-center opacity-10 bg-opacity-60"
+        className="hero-overlay bg-transparent dark:static fixed z-0 bg-no-repeat bg-center opacity-10 bg-opacity-60"
       ></div>
       <div data-aos="zoom-in" data-aos-duration="900" className="hero-content text-center text-neutral-content">
         <div className="max-w-md lg:max-w-3xl ">
           <h1 className="text-4xl lg:text-6xl font-secondary font-bold text-[#5ab270]">
             Find your favourite <span className="text-[#f3c556]">hadith</span>
           </h1>
-          <label className="input w-[75%] h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
+          <label className="input w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
             <input
               type="text"
-              className="grow text-[#0e1037] bg-white"
+              className="grow text-[#0e1037] bg-white "
               placeholder="Search"
             />
             <button
@@ -31,7 +31,7 @@ const Banner = () => {
                   id: "id",
                 })
               }
-              className="btn flex items-center gap-1 text-white pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
+              className="btn flex items-center gap-1 dark:border-[#5ab270] text-white pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Banner = () => {
               Search
             </button>
           </label>
-          <p className="text-[#0e1037] text-lg lg:text-xl font-semibold mt-8">
+          <p className="text-[#0e1037] dark:text-white text-lg lg:text-xl font-semibold mt-8">
             He said, The Messenger of Allah (PBUH) said: When a Muslim performs
             ablution properly, faces Allah with concentration and prays two
             rak'ahs, Paradise is guaranteed for him.

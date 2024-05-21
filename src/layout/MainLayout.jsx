@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../component/navbar/Navbar";
 import Footer from "../component/footer/Footer";
 
 const MainLayout = ({ children }) => {
   return (
-    <div className="font-primary">
+    <div id="main-div" className="font-primary dark bg-[#fefdf8] dark:stroke-neutral-700">
       <Navbar />
       <div className="mt-[65px]">{children}</div>
       <Footer />

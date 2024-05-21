@@ -13,10 +13,8 @@ const HomePage = () => {
     })
   },[])
   return (
-    <MainLayout>
-  
+    <MainLayout>  
       <Banner />
-    
       <BookOfHadith />
       <CategorizedHadith />
     </MainLayout>

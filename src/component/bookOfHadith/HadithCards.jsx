@@ -18,7 +18,7 @@ const HadithCards = () => {
   }, []);
 
   return (
-    <div className="grid grid-cols-3 gap-10 mt-10  justify-between">
+    <div className="grid grid-cols-3  gap-10 mt-10  justify-between">
       {hadithBooks.length > 0
         ? hadithBooks.map((book, idx) => <div key={idx} data-aos="fade-up" data-aos-duration="500" data-aos-delay={`${((idx+1) *2 )*50}`}><Card  book={book} /></div>)
         : null}
