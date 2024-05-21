@@ -11,7 +11,7 @@ const Banner = () => {
         style={{
           backgroundImage: `url(${banner})`,
         }}
-        className="hero-overlay bg-transparent dark:static fixed z-0 bg-no-repeat bg-center opacity-10 bg-opacity-60"
+        className="hero-overlay bg-transparent dark:static fixed z-0 bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
       ></div>
       <div data-aos="zoom-in" data-aos-duration="900" className="hero-content text-center text-neutral-content">
         <div className="max-w-md lg:max-w-3xl ">
@@ -21,7 +21,7 @@ const Banner = () => {
           <label className="input w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
             <input
               type="text"
-              className="grow text-[#0e1037] bg-white "
+              className="grow text-[#0e1037] dark:text-white bg-white"
               placeholder="Search"
             />
             <button
