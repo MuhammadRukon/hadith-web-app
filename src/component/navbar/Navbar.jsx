@@ -8,20 +8,22 @@ import { MdOutlineLightMode } from "react-icons/md";
 
 const Navbar = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-  
-  const handleThemeChange = () => {
-    const color = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", color);
-    
+
+  useEffect(() => {
     const mainDiv = document.getElementById("main-div");
     if (theme === "dark") {
-      mainDiv.classList.remove("dark");
-      mainDiv.classList.add("light");
-    } else {
-      mainDiv.classList.remove("light");
       mainDiv.classList.add("dark");
+      mainDiv.classList.remove("light");
+    } else {
+      mainDiv.classList.add("light");
+      mainDiv.classList.remove("dark");
     }
-    setTheme(color);
+  }, [theme]);
+
+  const handleThemeChange = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
   };
   return (
     <>
