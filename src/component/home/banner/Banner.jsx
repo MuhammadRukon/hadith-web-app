@@ -21,7 +21,7 @@ const Banner = () => {
           <label className="input w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
             <input
               type="text"
-              className="grow text-[#0e1037] dark:text-white bg-white"
+              className="grow text-[#0e1037] dark:text-[#fefdf8] bg-white"
               placeholder="Search"
             />
             <button
@@ -31,7 +31,7 @@ const Banner = () => {
                   id: "id",
                 })
               }
-              className="btn flex items-center gap-1 dark:border-[#5ab270] text-white pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
+              className="btn flex items-center gap-1 dark:border-[#5ab270] text-[#fefdf8] pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -48,7 +48,7 @@ const Banner = () => {
               Search
             </button>
           </label>
-          <p className="text-[#0e1037] dark:text-white text-lg lg:text-xl font-semibold mt-8">
+          <p className="text-[#0e1037] dark:text-[#fefdf8] text-lg lg:text-xl font-semibold mt-8">
             He said, The Messenger of Allah (PBUH) said: When a Muslim performs
             ablution properly, faces Allah with concentration and prays two
             rak'ahs, Paradise is guaranteed for him.
