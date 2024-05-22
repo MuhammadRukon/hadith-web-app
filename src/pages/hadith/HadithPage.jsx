@@ -4,7 +4,7 @@ import MainLayout from "../../layout/MainLayout";
 const HadithPage = () => {
   return (
     <MainLayout>
-      <div className="min-h-[calc(100vh-144px)] text-[#0e1037] flex justify-center items-center text-6xl font-secondary">
+      <div className="min-h-[calc(100vh-144px)] text-[#0e1037] dark:text-[#fefdf8] flex justify-center items-center text-6xl  font-secondary">
         Hadith page is under development.
       </div>
     </MainLayout>

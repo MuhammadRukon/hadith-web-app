@@ -1,42 +1,62 @@
 [
   {
     "name": "Aqida",
-    "hadith_range": 7
+    "hadith_range": 7,
+    "nameBn": "আকিদা",
+    "hadith_range_bn": "৭"
   },
   {
     "name": "faith",
-    "hadith_range": 5
+    "hadith_range": 5,
+    "nameBn": "ঈমান",
+    "hadith_range_bn": "৫"
   },
   {
     "name": "sanctity",
-    "hadith_range": 12
+    "hadith_range": 12,
+    "nameBn": "পবিত্রতা",
+    "hadith_range_bn": "১২"
   },
   {
     "name": "Hadith stories",
-    "hadith_range": 31
+    "hadith_range": 31,
+    "nameBn": "হাদিসের গল্প",
+    "hadith_range_bn": "৩১"
   },
   {
     "name": "the prayer",
-    "hadith_range": 38
+    "hadith_range": 38,
+    "nameBn": "সালাত",
+    "hadith_range_bn": "৩৮"
   },
   {
     "name": "Donation is charity",
-    "hadith_range": 1
+    "hadith_range": 1,
+    "nameBn": "দান সদকাহ",
+    "hadith_range_bn": "১"
   },
   {
     "name": "Animal rights",
-    "hadith_range": 1
+    "hadith_range": 1,
+    "nameBn": "পশু পাখির অধিকার",
+    "hadith_range_bn": "১"
   },
   {
     "name": "Deeds and virtues",
-    "hadith_range": 2
+    "hadith_range": 2,
+    "nameBn": "আমল ও নেকী",
+    "hadith_range_bn": "২"
   },
   {
     "name": "about marriage",
-    "hadith_range": 5
+    "hadith_range": 5,
+    "nameBn": "বিবাহ সম্পর্কে",
+    "hadith_range_bn": "৫"
   },
   {
     "name": "Business is business",
-    "hadith_range": 1
+    "hadith_range": 1,
+    "nameBn": "ব্যবসা বাণিজ্য",
+    "hadith_range_bn": "১"
   }
 ]
