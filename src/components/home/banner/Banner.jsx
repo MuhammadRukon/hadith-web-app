@@ -46,7 +46,7 @@ const Banner = () => {
             </h1>
             <label className="input w-[90%] lg:w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center justify-between gap-2 pr-1.5">
               <input
-              className="w-full"
+              className="w-full text-[#0e1037] dark:text-white"
                 type="text"
                 placeholder={content.search[lang]}
               />
