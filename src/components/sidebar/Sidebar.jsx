@@ -23,9 +23,9 @@ const Sidebar = ({
       <div className="w-full relative text-center">
         <div
           onClick={() => handleShow(false)}
-          className="absolute right-6 top-4 text-xl"
+          className="absolute right-6 top-4 text-xl dark:text-white text-[#444444]"
         >
-          <MdCancelPresentation size={30} color="#444444"/>
+          <MdCancelPresentation size={30} />
         </div>
 
         <ul className="flex flex-col gap-8 pb-5 pt-16 text-base font-semibold">
