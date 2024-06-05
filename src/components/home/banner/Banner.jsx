@@ -22,7 +22,7 @@ const Banner = () => {
           style={{
             backgroundImage: `url(${banner})`,
           }}
-          className="hero-overlay bg-[length:80vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
+          className="hero-overlay bg-[length:95vw] sm:bg-[length:85vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
         ></div>
         <div
           data-aos="zoom-in"
