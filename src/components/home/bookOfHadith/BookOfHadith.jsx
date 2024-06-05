@@ -12,7 +12,7 @@ const BookOfHadithPage = () => {
   };
   return (
     <Container>
-      <div className="text-center dark:text-[#fefdf8] dark:text dark:bg-stone-700 pt-20 pb-16 sticky z-10 bg-[#fefdf8]">
+      <div className="text-center dark:text-[#fefdf8] dark:text dark:bg-stone-700 pt-14 lg:pt-20 pb-16 sticky z-10 bg-[#fefdf8]">
         <h2 className="text-3xl lg:text-5xl font-secondary font-bold text-[#5ab270]">
           {lang == "en" ? (
             <>
@@ -24,7 +24,7 @@ const BookOfHadithPage = () => {
             </>
           )}
         </h2>
-        <p className="text-lg w-[80%] lg:w-[60%] mx-auto mt-10 leading-8 tracking-wide font-medium">
+        <p className="text-lg w-[80%] lg:w-[60%] mx-auto mt-6 lg:mt-10 leading-8 tracking-wide font-medium">
           {content.desc[lang]}
         </p>
         <HadithCards />

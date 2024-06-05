@@ -17,12 +17,12 @@ const Banner = () => {
   };
   return (
     <div className="bg-[#fff9ef] dark:bg-stone-700 relative overflow-hidden">
-      <div className="hero mt-[34px] min-h-[70vh]">
+      <div className="hero mt-[34px] min-h-[60vh] xl:min-h-[70vh]">
         <div
           style={{
             backgroundImage: `url(${banner})`,
           }}
-          className="hero-overlay bg-transparent dark:static fixed z-0 bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
+          className="hero-overlay bg-[length:80vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
         ></div>
         <div
           data-aos="zoom-in"
