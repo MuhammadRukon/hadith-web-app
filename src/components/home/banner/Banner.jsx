@@ -17,12 +17,12 @@ const Banner = () => {
   };
   return (
     <div className="bg-[#fff9ef] dark:bg-stone-700 relative overflow-hidden">
-      <div className="hero mt-[34px] min-h-[70vh]">
+      <div className="hero mt-[34px] min-h-[60vh] xl:min-h-[70vh]">
         <div
           style={{
             backgroundImage: `url(${banner})`,
           }}
-          className="hero-overlay bg-transparent dark:static fixed z-0 bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
+          className="hero-overlay bg-[length:80vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
         ></div>
         <div
           data-aos="zoom-in"
@@ -44,10 +44,10 @@ const Banner = () => {
                 </>
               )}
             </h1>
-            <label className="input w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center gap-2 pr-1.5">
+            <label className="input w-[90%] lg:w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center justify-between gap-2 pr-1.5">
               <input
+              className="w-full"
                 type="text"
-                className="grow text-[#0e1037] dark:text-[#fefdf8] bg-white"
                 placeholder={content.search[lang]}
               />
               <button
@@ -57,7 +57,7 @@ const Banner = () => {
                     id: "id",
                   })
                 }
-                className="btn flex items-center gap-1 dark:border-[#5ab270] text-[#fefdf8] pr-5 pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
+                className="btn flex items-center gap-1 dark:border-[#5ab270] text-[#fefdf8] pr-3 md:pr-5 pl-1.5 md:pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

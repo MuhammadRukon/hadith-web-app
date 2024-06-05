@@ -1,12 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { changeToBn, changeToEn } from "../redux/features/languageSlice";
 
 const MainLayout = ({ children }) => {
+  
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  // dark theme logic
+  useEffect(() => {
+    const mainDiv = document.getElementById("main-div");
+    if (theme === "dark") {
+      mainDiv.classList.add("dark");
+      mainDiv.classList.remove("light");
+    } else {
+      mainDiv.classList.add("light");
+      mainDiv.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleThemeChange = () => {
+    console.log('click');
+    const newTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  };
+
+  // bangla / english
+  const { lang } = useSelector((state) => state.language);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    localStorage.setItem("lang", lang);
+  }, [lang]);
+
+  const handleChangeLanguage = () => {
+    lang === "en" ? dispatch(changeToBn()) : dispatch(changeToEn());
+  };
+
   return (
     <div id="main-div" className="font-primary">
-      <Navbar />
-      <div className="mt-[65px] bg-[#fefdf8] dark:bg-stone-700">{children}</div>
+      <Navbar handleChangeLanguage={handleChangeLanguage} lang={lang} handleThemeChange={handleThemeChange} theme={theme}/>
+      <div className="mt-[65px] w-full bg-[#fefdf8] overflow-hidden dark:bg-stone-700">{children}</div>
       <Footer />
     </div>
   );
