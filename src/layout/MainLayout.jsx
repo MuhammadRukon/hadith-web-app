@@ -42,7 +42,7 @@ const MainLayout = ({ children }) => {
   return (
     <div id="main-div" className="font-primary">
       <Navbar handleChangeLanguage={handleChangeLanguage} lang={lang} handleThemeChange={handleThemeChange} theme={theme}/>
-      <div className="mt-[65px] w-full bg-[#fefdf8] overflow-hidden dark:bg-stone-700">{children}</div>
+      <div className="mt-[65px] w-full bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">{children}</div>
       <Footer />
     </div>
   );

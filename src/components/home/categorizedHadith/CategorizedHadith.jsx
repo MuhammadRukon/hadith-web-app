@@ -13,7 +13,7 @@ const CategorizedHadith = () => {
   };
   return (
     <Container>
-      <div className="text-center dark:bg-stone-700 dark:text-[#fefdf8] py-14 lg:pt-20 sticky z-10 bg-[#fefdf8]">
+      <div className="text-center dark:bg-[#312c2a] dark:text-[#fefdf8] py-14 lg:pt-20 sticky z-10 bg-[#fefdf8]">
         <h2 className="text-3xl lg:text-5xl font-secondary font-medium">
           
         </h2>

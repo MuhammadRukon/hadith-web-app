@@ -16,13 +16,13 @@ const Banner = () => {
     }
   };
   return (
-    <div className="bg-[#fff9ef] dark:bg-stone-700 relative overflow-hidden">
+    <div className="bg-[#fff9ef] dark:bg-[#312c2a] relative overflow-hidden">
       <div className="hero mt-[34px] min-h-[60vh] xl:min-h-[70vh]">
         <div
           style={{
             backgroundImage: `url(${banner})`,
           }}
-          className="hero-overlay bg-[length:95vw] sm:bg-[length:85vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-20 bg-opacity-60"
+          className="hero-overlay bg-[length:95vw] sm:bg-[length:85vw] bg-transparent dark:static fixed z-[0] bg-no-repeat bg-center opacity-10 dark:opacity-35 bg-opacity-90"
         ></div>
         <div
           data-aos="zoom-in"
@@ -44,7 +44,7 @@ const Banner = () => {
                 </>
               )}
             </h1>
-            <label className="input w-[90%] lg:w-[75%] dark:dark:bg-stone-800 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center justify-between gap-2 pr-1.5">
+            <label className="input w-[90%] lg:w-[75%] dark:dark:bg-stone-900 h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center justify-between gap-2 pr-1.5">
               <input
               className="w-full text-[#0e1037] dark:text-white"
                 type="text"
@@ -74,7 +74,7 @@ const Banner = () => {
                 {content.search[lang]}
               </button>
             </label>
-            <p className="text-[#0e1037] dark:text-[#fefdf8] text-lg lg:text-xl font-semibold mt-8">
+            <p className={`text-[#0e1037] dark:text-[#fefdf8] text-lg lg:text-xl  ${lang=='bn'?"font-normal":"font-semibold"} mt-8`}>
               {content.desc[lang]}
             </p>
           </div>

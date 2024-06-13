@@ -12,10 +12,10 @@ const Navbar = ({handleChangeLanguage, lang , handleThemeChange, theme}) => {
   
   return (
     <>
-      <div className="text-[#0e1037] py-1 dark:bg-stone-700 dark:text-[#fefdf8] bg-[#fff9ef] dark:shadow-[0_2px_20px_rgba(0,0,0,0.17)] shadow-[0_2px_10px_rgba(0,0,0,0.12)] fixed top-0 left-0 w-full z-50">
+      <div className="text-[#0e1037] py-1 dark:bg-[#312c2a] dark:text-[#fefdf8] bg-[#fff9ef] dark:shadow-[0_2px_20px_rgba(0,0,0,0.17)] shadow-[0_2px_10px_rgba(0,0,0,0.12)] fixed top-0 left-0 w-full z-50">
         <div className="xl:container mx-auto px-8  h-[64px] flex justify-between items-center">
           <Logo />
-          <ul className="hidden sm:flex  gap-8 py-5 text-base font-semibold">
+          <ul className={`hidden sm:flex  gap-8 py-5 text-base ${lang=='bn'?"font-normal":"font-semibold"}`}>
             <NavItems setShow={setShowSidebar}/>
           </ul>
           <div className="hidden sm:flex  items-center gap-4">

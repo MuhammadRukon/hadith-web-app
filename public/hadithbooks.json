@@ -1,9 +1,13 @@
 [
   {
-    "name": "Sahih Bukhari",
-    "hadith_range": 7563,
-    "nameBn": "সহিহ বুখারী",
-    "hadith_range_bn": "৭৫৬৩"
+    "book_name": {
+          "en": "Sahih Bukhari",
+          "bn": "সহিহ বুখারী"
+    },
+    "hadith_range":{
+      "en": 7563,
+      "bn": "৭৫৬৩"
+    }
   },
   {
     "name": "Sahih Muslim",

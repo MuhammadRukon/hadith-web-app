@@ -18,7 +18,7 @@ const Sidebar = ({
     <div
       className={`inline-block transition duration-200 ${
         show ? "translate-x-0" : "translate-x-[-1000px]"
-      } md:hidden absolute top-0 left-0 w-full max-h-[100vh] h-[100vh] bg-[#fefdf8] dark:bg-stone-700`}
+      } md:hidden absolute top-0 left-0 w-full max-h-[100vh] h-[100vh] bg-[#fefdf8] dark:bg-[#312c2a]`}
     >
       <div className="w-full relative text-center">
         <div
