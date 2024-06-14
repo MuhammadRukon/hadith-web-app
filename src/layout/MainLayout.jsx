@@ -10,7 +10,7 @@ const MainLayout = ({ children }) => {
 
   // dark theme logic
   useEffect(() => {
-    const mainDiv = document.getElementById("main-div");
+    const mainDiv = document.getElementById("root");
     if (theme === "dark") {
       mainDiv.classList.add("dark");
       mainDiv.classList.remove("light");
@@ -40,7 +40,7 @@ const MainLayout = ({ children }) => {
   };
 
   return (
-    <div id="main-div" className="font-primary">
+    <div className="font-primary">
       <Navbar handleChangeLanguage={handleChangeLanguage} lang={lang} handleThemeChange={handleThemeChange} theme={theme}/>
       <div className="mt-[65px] w-full bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">{children}</div>
       <Footer />
