@@ -22,7 +22,7 @@ const Sidebar = () => {
     <div>
       {/* Sidebar */}
       <div
-        className={`z-10 h-[calc(100vh-54px)] absolute top-0 md:static flex flex-col md:rounded-3xl justify-between bg-[#5ab270] dark:bg-[#24201e] w-64 space-y-6 px-2 py-4 transform ${
+        className={`z-10 h-[calc(100vh-54px)] absolute top-0 md:static flex flex-col rounded-2xl justify-between bg-[#5ab270] dark:bg-[#24201e] w-64 space-y-6 px-2 py-4 transform ${
           isActive && "-translate-x-full"
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >

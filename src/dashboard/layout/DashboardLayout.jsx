@@ -23,7 +23,7 @@ const DashboardLayout = () => {
         <Sidebar />
         <div className="w-full">
           <TopNav />
-         <div>
+         <div className="px-6 mt-[25px] rounded-2xl py-[27px]">
          <Outlet/>
          </div>
          <Footer dashboard={true}/>

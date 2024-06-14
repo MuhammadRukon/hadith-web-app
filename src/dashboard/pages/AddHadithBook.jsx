@@ -12,7 +12,7 @@ const AddHadithBook = () => {
     });
   };
   return (
-    <div className="flex justify-center items-center min-h-[79.4vh]">
+    <div className="flex justify-center items-center min-h-[70.74vh]">
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit((data) => handlePostData(data))}
