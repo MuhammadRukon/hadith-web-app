@@ -6,7 +6,7 @@ const HadithCards = () => {
   const [hadithBooks, setHadithBooks] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:5000/hadith-books");
+      const res = await fetch("https://hadith-app-server.vercel.app/hadith-books");
       const data = await res.json();
       if (data?.length > 0) {
         setHadithBooks(data);

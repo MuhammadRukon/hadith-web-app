@@ -9,7 +9,7 @@ const AddHadithBook = () => {
       toast.error("emply fields");
       return;
     }
-    await fetch("http://localhost:5000/add-hadith-book", {
+    await fetch("https://hadith-app-server.vercel.app/add-hadith-book", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
