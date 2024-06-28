@@ -1,0 +1,82 @@
+[
+  {
+    "book_name": {
+      "en": "Sahih Bukhari",
+      "bn": "সহিহ বুখারী"
+    },
+    "hadith_range": {
+      "en": 7563,
+      "bn": "৭৫৬৩"
+    }
+  },
+  {
+    "book_name": {
+      "en": "Sahih Muslim",
+      "bn": "সহিহ মুসলিম"
+    },
+    "hadith_range": {
+      "en": 7453,
+      "bn": "৭৪৫৩"
+    },
+    "chapters":[{
+        "chapter_name":{
+            "en": "Revelation",
+            "bn": "ওহীর সূচনা অধ্যায়"
+          },
+          "count":{
+            "en": 7,
+            "bn": "৭"
+          },
+          "range": {
+            "from":{
+                "en": 1,
+                "bn": "১"
+              },
+              "to":{
+                "en": 7,
+                "bn": "৭"
+              }
+          }
+    }]
+  },
+  {
+    "book_name": {
+      "en": "Sunan An-Nasa'i",
+      "bn": "সুনানে আন-নাসায়ী"
+    },
+    "hadith_range": {
+      "en": 5758,
+      "bn": "৫৭৫৮"
+    }
+  },
+  {
+    "book_name": {
+      "en": "Sunan Abu Dawud",
+      "bn": "সুনানে আবু দাউদ"
+    },
+    "hadith_range": {
+      "en": 5274,
+      "bn": "৫২৭৪"
+    }
+  },
+  {
+    "book_name": {
+      "en": "Jame' at-Tirmidhi",
+      "bn": "জামে' আত-তিরমিজি"
+    },
+    "hadith_range": {
+      "en": 3956,
+      "bn": "৩৯৫৬"
+    }
+  },
+  {
+    "book_name": {
+      "en": "Sunan Ibn Majah",
+      "bn": "সুনানে ইবনে মাজাহ"
+    },
+    "hadith_range": {
+      "en": 4341,
+      "bn": "৪৩৪১"
+    }
+  }
+]

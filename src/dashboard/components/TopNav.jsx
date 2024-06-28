@@ -1,18 +1,40 @@
-import { useState } from 'react';
-import { FaBars, FaBell, FaSignOutAlt } from 'react-icons/fa'
-import { IoMdSettings } from 'react-icons/io'
+import { useEffect, useState } from "react";
+import { FaBars, FaBell, FaSignOutAlt } from "react-icons/fa";
+import { IoMdSettings } from "react-icons/io";
 import profileImg from "./../../assets/profileImg.png";
+import { useDispatch, useSelector } from "react-redux";
+import { changeToBn, changeToEn } from "../../redux/features/languageSlice";
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
 const TopNav = () => {
-        //user
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  // dark theme logic
+  useEffect(() => {
+    const mainDiv = document.getElementById("root");
+    if (theme === "dark") {
+      mainDiv.classList.add("dark");
+      mainDiv.classList.remove("light");
+    } else {
+      mainDiv.classList.add("light");
+      mainDiv.classList.remove("dark");
+    }
+  }, [theme]);
+
+  const handleThemeChange = () => {
+    const newTheme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", newTheme);
+    setTheme(newTheme);
+  };
+
   const [user, setUser] = useState({
     company: "Hadith Khujo",
     name: "Muhammad",
-    image: profileImg
+    image: profileImg,
   });
-  const handleToggle = ()=>{
+  const handleToggle = () => {
     console.log("toggle");
-  }
+  };
   //handle logout
   const handleLogout = () => {
     console.log("logged out button clicked");
@@ -42,18 +64,19 @@ const TopNav = () => {
         <div className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden md:flex justify-center items-center cursor-pointer rounded-full">
           <FaBell size={23} />
         </div>
-        <div className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden md:flex justify-center items-center cursor-pointer rounded-full">
-          <IoMdSettings size={26} />
-        </div>
         <div
-          onClick={handleLogout}
-          className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden sm:flex justify-center items-center cursor-pointer rounded-full"
+          onClick={handleThemeChange}
+          className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden md:flex justify-center items-center cursor-pointer rounded-full"
         >
-          <FaSignOutAlt size={26} />
+          {theme == "light" ? (
+            <MdOutlineDarkMode size={30} />
+          ) : (
+            <MdOutlineLightMode size={30} />
+          )}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TopNav
+export default TopNav;
