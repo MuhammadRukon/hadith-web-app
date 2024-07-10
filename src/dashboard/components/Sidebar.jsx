@@ -5,7 +5,7 @@ import { FaUser } from "react-icons/fa";
 import { MdOutlineCancel } from "react-icons/md";
 import { FaSignOutAlt } from "react-icons/fa";
 import { AiFillHome } from "react-icons/ai";
-import { IoStatsChart } from "react-icons/io5";
+import { FaBookOpen } from "react-icons/fa6";
 import { FaUsersCog } from "react-icons/fa";
 import Logo from "../../components/logo/Logo";
 
@@ -44,7 +44,7 @@ const Sidebar = () => {
               {/* Menu Items */}
               <MenuItem icon={AiFillHome} label="Home" address="/dashboard" />
               <MenuItem
-                icon={IoStatsChart}
+                icon={FaBookOpen}
                 label="Add Book"
                 address="add-hadith-book"
               />
@@ -52,6 +52,11 @@ const Sidebar = () => {
                 icon={FaUsersCog}
                 label="Add Hadith"
                 address="add-hadith"
+              />
+              <MenuItem
+                icon={FaUsersCog}
+                label="Add Chapter"
+                address="add-chapter"
               />
             </nav>
           </div>

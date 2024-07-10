@@ -4,9 +4,10 @@ import Card from "./Card";
 
 const HadithCards = () => {
   const [hadithBooks, setHadithBooks] = useState([]);
+  const route = import.meta.env.VITE_ENVIRONMENT == "development" ? (import.meta.env.VITE_LOCALHOST):(import.meta.env.VITE_PROD);
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://hadith-app-server.vercel.app/hadith-books");
+      const res = await fetch(`${route}/hadith-books`);
       const data = await res.json();
       if (data?.length > 0) {
         setHadithBooks(data);

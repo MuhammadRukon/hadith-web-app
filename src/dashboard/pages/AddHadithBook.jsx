@@ -3,13 +3,14 @@ import toast from "react-hot-toast";
 
 const AddHadithBook = () => {
   const { register, handleSubmit } = useForm();
-
+  const route = import.meta.env.VITE_ENVIRONMENT == "development" ? (import.meta.env.VITE_LOCALHOST):(import.meta.env.VITE_PROD);
+  console.log(route);
   const handlePostData = async (data) => {
     if(data.bookNameEn == "" || data.bookNameBn==""){
       toast.error("emply fields");
       return;
     }
-    await fetch("https://hadith-app-server.vercel.app/add-hadith-book", {
+    await fetch(`${route}/add-hadith-book`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -18,6 +19,7 @@ const AddHadithBook = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data && data.status == 200) {
           toast.success("Added successfully");
         } else if (data && data.status == 500) {
