@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { changeToBn, changeToEn } from "../redux/features/languageSlice";
+import { Outlet } from "react-router-dom";
 
-const MainLayout = ({ children }) => {
-  
+const MainLayout = () => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   // dark theme logic
@@ -21,7 +21,6 @@ const MainLayout = ({ children }) => {
   }, [theme]);
 
   const handleThemeChange = () => {
-    console.log('click');
     const newTheme = theme === "dark" ? "light" : "dark";
     localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
@@ -41,8 +40,15 @@ const MainLayout = ({ children }) => {
 
   return (
     <div className="font-primary">
-      <Navbar handleChangeLanguage={handleChangeLanguage} lang={lang} handleThemeChange={handleThemeChange} theme={theme}/>
-      <div className="mt-[65px] w-full bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">{children}</div>
+      <Navbar
+        handleChangeLanguage={handleChangeLanguage}
+        lang={lang}
+        handleThemeChange={handleThemeChange}
+        theme={theme}
+      />
+      <div className="mt-[65px] w-full dark-scroller bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
