@@ -2,15 +2,36 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import HadithPage from "../pages/hadith/HadithPage";
 import HadithBooksPage from "../pages/hadithBooks/HadithBooksPage";
-import AddHadithBook from "../dashboard/pages/AddHadithBook";
+import AddBook from "../dashboard/pages/AddBook";
 import DashboardHome from "../dashboard/pages/DashboardHome";
 import AddHadith from "../dashboard/pages/AddHadith";
 import DashboardLayout from "../dashboard/layout/DashboardLayout";
+import AddChapter from "../dashboard/pages/AddChapter";
+import MainLayout from "../layout/MainLayout";
+import BookPage from "../pages/book/BookPage";
 
 export const routes = createBrowserRouter([
   {
-    index: true,
-    element: <HomePage />,
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    children: [
+      {
+        index: true,
+        element: <HomePage />,
+      },
+      {
+        path: "/hadith",
+        element: <HadithPage />,
+      },
+      {
+        path: "/hadith-books",
+        element: <HadithBooksPage />,
+      },
+      {
+        path: "/hadith-books/:id",
+        element: <BookPage/>,
+      },
+    ],
   },
   {
     path: "/dashboard",
@@ -22,21 +43,16 @@ export const routes = createBrowserRouter([
       },
       {
         path: "add-hadith-book",
-        element: <AddHadithBook />,
+        element: <AddBook />,
       },
       {
         path: "add-hadith",
         element: <AddHadith />,
       },
+      {
+        path: "add-chapter",
+        element: <AddChapter />,
+      },
     ],
-  },
-
-  {
-    path: "/hadith",
-    element: <HadithPage />,
-  },
-  {
-    path: "/hadith-books",
-    element: <HadithBooksPage />,
   },
 ]);

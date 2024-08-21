@@ -1,12 +1,9 @@
 import { useEffect, useState } from "react";
-import { FaBars, FaBell, FaSignOutAlt } from "react-icons/fa";
-import { IoMdSettings } from "react-icons/io";
+import { FaBars, FaBell} from "react-icons/fa";
 import profileImg from "./../../assets/profileImg.png";
-import { useDispatch, useSelector } from "react-redux";
-import { changeToBn, changeToEn } from "../../redux/features/languageSlice";
 import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md";
 
-const TopNav = () => {
+const TopNav = ({setIsActive, isActive}) => {
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   // dark theme logic
@@ -26,19 +23,17 @@ const TopNav = () => {
     localStorage.setItem("theme", newTheme);
     setTheme(newTheme);
   };
-
+  
   const [user, setUser] = useState({
     company: "Hadith Khujo",
     name: "Muhammad",
     image: profileImg,
   });
   const handleToggle = () => {
-    console.log("toggle");
+    setIsActive(true)
+    console.log("top bar click", isActive);
   };
-  //handle logout
-  const handleLogout = () => {
-    console.log("logged out button clicked");
-  };
+
   return (
     <div className="bg-[#5ab270] dark:bg-[#24201e] rounded-full md:rounded-2xl w-full flex items-center justify-between p-5">
       {/* user image */}
@@ -57,16 +52,16 @@ const TopNav = () => {
       <div className=" flex gap-3 md:gap-[15px]">
         <button
           onClick={handleToggle}
-          className="bg-[#fff9ef] md:hidden w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] flex justify-center items-center cursor-pointer rounded-full"
+          className="md:hidden flex bg-[#fff9ef] dark:bg-stone-400 text-[#24201e] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] justify-center items-center cursor-pointer rounded-full"
         >
           <FaBars />
         </button>
-        <div className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden md:flex justify-center items-center cursor-pointer rounded-full">
+        <div className="hidden md:flex bg-[#fff9ef] dark:bg-stone-400 text-[#24201e] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] justify-center items-center cursor-pointer rounded-full">
           <FaBell size={23} />
         </div>
         <div
           onClick={handleThemeChange}
-          className="bg-[#fff9ef] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] hidden md:flex justify-center items-center cursor-pointer rounded-full"
+          className="hidden md:flex bg-[#fff9ef] dark:bg-stone-400 text-[#24201e] w-[48px] h-[48px] sm:w-[54px] sm:h-[54px] justify-center items-center cursor-pointer rounded-full"
         >
           {theme == "light" ? (
             <MdOutlineDarkMode size={30} />

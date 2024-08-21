@@ -1,6 +1,7 @@
 [
   {
-    "book_name": {
+    "id": 1,
+    "name": {
       "en": "Sahih Bukhari",
       "bn": "সহিহ বুখারী"
     },
@@ -10,37 +11,19 @@
     }
   },
   {
-    "book_name": {
+    "id": 2,
+    "name": {
       "en": "Sahih Muslim",
       "bn": "সহিহ মুসলিম"
     },
     "hadith_range": {
       "en": 7453,
       "bn": "৭৪৫৩"
-    },
-    "chapters":[{
-        "chapter_name":{
-            "en": "Revelation",
-            "bn": "ওহীর সূচনা অধ্যায়"
-          },
-          "count":{
-            "en": 7,
-            "bn": "৭"
-          },
-          "range": {
-            "from":{
-                "en": 1,
-                "bn": "১"
-              },
-              "to":{
-                "en": 7,
-                "bn": "৭"
-              }
-          }
-    }]
+    }
   },
   {
-    "book_name": {
+    "id": 3,
+    "name": {
       "en": "Sunan An-Nasa'i",
       "bn": "সুনানে আন-নাসায়ী"
     },
@@ -50,7 +33,8 @@
     }
   },
   {
-    "book_name": {
+    "id": 4,
+    "name": {
       "en": "Sunan Abu Dawud",
       "bn": "সুনানে আবু দাউদ"
     },
@@ -60,7 +44,8 @@
     }
   },
   {
-    "book_name": {
+    "id": 5,
+    "name": {
       "en": "Jame' at-Tirmidhi",
       "bn": "জামে' আত-তিরমিজি"
     },
@@ -70,7 +55,8 @@
     }
   },
   {
-    "book_name": {
+    "id": 6,
+    "name": {
       "en": "Sunan Ibn Majah",
       "bn": "সুনানে ইবনে মাজাহ"
     },
