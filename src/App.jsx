@@ -6,12 +6,10 @@ import store from "./redux/Store.jsx";
 
 function App() {
   return (
-    <>
     <Provider store={store}>
       <Toaster position="top-right" />
-      <RouterProvider router={routes}/>
-      </Provider>
-    </>
+      <RouterProvider router={routes} />
+    </Provider>
   );
 }
 

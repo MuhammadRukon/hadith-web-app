@@ -1,27 +1,48 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
-
+import { useDispatch, useSelector } from "react-redux";
+import { setBooks } from "../../redux/features/bookSlice";
+import { Link } from "react-router-dom";
 
 const HadithCards = () => {
-  const [hadithBooks, setHadithBooks] = useState([]);
-  const route = import.meta.env.VITE_ENVIRONMENT == "development" ? (import.meta.env.VITE_LOCALHOST):(import.meta.env.VITE_PROD);
+  // const dispatch = useDispatch();
+  const [books, setBooks] = useState([])
+  // const { books } = useSelector((state) => state.books);
+
+  const route =
+    import.meta.env.VITE_ENVIRONMENT == "development"
+      ? import.meta.env.VITE_LOCALHOST
+      : import.meta.env.VITE_PROD;
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/hadith-books`);
+      // const res = await fetch(`/hadithBook.json`);
       const data = await res.json();
       if (data?.length > 0) {
-        setHadithBooks(data);
+        // dispatch(setBooks(data));
+        setBooks(data);
       } else {
-        setHadithBooks([]);
+        setBooks([]);
       }
     };
     fetchData();
   }, []);
-
   return (
     <div className="grid grid-cols-2 md:grid-cols-3  gap-10 mt-10  justify-between">
-      {hadithBooks.length > 0
-        ? hadithBooks.map((book, idx) => <div key={idx} data-aos="fade-up" data-aos-duration="500" data-aos-delay={`${((idx+1) *2 )*50}`}><Card  book={book} hadithbooks={true}/></div>)
+      {books.length > 0
+        ? books.map((book) => (
+            <div
+              key={book.id}
+              data-aos="fade-up"
+              data-aos-duration="500"
+              data-aos-delay={`${book.id * 100}`}
+            >
+              <Link to={`/hadith-books/${book._id}`}>
+                <Card item={book} />
+              </Link>
+            </div>
+          ))
         : null}
     </div>
   );

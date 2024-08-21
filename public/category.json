@@ -1,62 +1,112 @@
 [
   {
-    "name": "Aqida",
-    "hadith_range": 7,
-    "nameBn": "আকিদা",
-    "hadith_range_bn": "৭"
+    "id": 1,
+    "name": {
+      "en": "Aqida",
+      "bn": "আকিদা"
+    },
+    "hadith_range": {
+      "en": 7,
+      "bn": "৭"
+    }
   },
   {
-    "name": "faith",
-    "hadith_range": 5,
-    "nameBn": "ঈমান",
-    "hadith_range_bn": "৫"
+    "id": 2,
+    "name": {
+      "en": "faith",
+      "bn": "ঈমান"
+    },
+    "hadith_range": {
+      "en": 5,
+      "bn": "৫"
+    }
   },
   {
-    "name": "sanctity",
-    "hadith_range": 12,
-    "nameBn": "পবিত্রতা",
-    "hadith_range_bn": "১২"
+    "id": 3,
+    "name": {
+      "en": "sanctity",
+      "bn": "পবিত্রতা"
+    },
+    "hadith_range": {
+      "en": 12,
+      "bn": "১২"
+    }
   },
   {
-    "name": "Hadith stories",
-    "hadith_range": 31,
-    "nameBn": "হাদিসের গল্প",
-    "hadith_range_bn": "৩১"
+    "id": 4,
+    "name": {
+      "en": "Hadith stories",
+      "bn": "হাদিসের গল্প"
+    },
+    "hadith_range": {
+      "en": 31,
+      "bn": "৩১"
+    }
   },
   {
-    "name": "the prayer",
-    "hadith_range": 38,
-    "nameBn": "সালাত",
-    "hadith_range_bn": "৩৮"
+    "id": 5,
+    "name": {
+      "en": "the prayer",
+      "bn": "সালাত"
+    },
+    "hadith_range": {
+      "en": 38,
+      "bn": "৩৮"
+    }
   },
   {
-    "name": "Donation is charity",
-    "hadith_range": 1,
-    "nameBn": "দান সদকাহ",
-    "hadith_range_bn": "১"
+    "id": 6,
+    "name": {
+      "en": "Donation is charity",
+      "bn": "দান সদকাহ"
+    },
+    "hadith_range": {
+      "en": 1,
+      "bn": "১"
+    }
   },
   {
-    "name": "Animal rights",
-    "hadith_range": 1,
-    "nameBn": "পশু পাখির অধিকার",
-    "hadith_range_bn": "১"
+    "id": 7,
+    "name": {
+      "en": "Animal rights",
+      "bn": "পশু পাখির অধিকার"
+    },
+    "hadith_range": {
+      "en": 1,
+      "bn": "১"
+    }
   },
   {
-    "name": "Deeds and virtues",
-    "hadith_range": 2,
-    "nameBn": "আমল ও নেকী",
-    "hadith_range_bn": "২"
+    "id": 8,
+    "name": {
+      "en": "Deeds and virtues",
+      "bn": "আমল ও নেকী"
+    },
+    "hadith_range": {
+      "en": 1,
+      "bn": "১"
+    }
   },
   {
-    "name": "about marriage",
-    "hadith_range": 5,
-    "nameBn": "বিবাহ সম্পর্কে",
-    "hadith_range_bn": "৫"
+    "id": 9,
+    "name": {
+      "en": "About marriage",
+      "bn": "বিবাহ সম্পর্কে"
+    },
+    "hadith_range": {
+      "en": 5,
+      "bn": "৫"
+    }
   },
   {
-    "name": "Business is business",
-    "hadith_range": 1,
-    "nameBn": "ব্যবসা বাণিজ্য",
-    "hadith_range_bn": "১"
+    "id": 10,
+    "name": {
+      "en": "Business and Trade",
+      "bn": "ব্যবসা বাণিজ্য"
+    },
+    "hadith_range": {
+      "en": 5,
+      "bn": "৫"
+    }
   }
 ]
