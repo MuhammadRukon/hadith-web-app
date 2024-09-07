@@ -59,6 +59,11 @@ const Sidebar = ({isActive, setIsActive}) => {
                 label="Add Hadith"
                 address="add-hadith"
               />
+              <MenuItem
+                icon={BsFillChatLeftQuoteFill}
+                label="Add Subject"
+                address="add-subject"
+              />
             </nav>
           </div>
         </div>

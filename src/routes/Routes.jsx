@@ -9,6 +9,7 @@ import DashboardLayout from "../dashboard/layout/DashboardLayout";
 import AddChapter from "../dashboard/pages/AddChapter";
 import MainLayout from "../layout/MainLayout";
 import BookPage from "../pages/book/BookPage";
+import AddSubject from "../dashboard/pages/AddSubject";
 
 export const routes = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ export const routes = createBrowserRouter([
       {
         path: "add-chapter",
         element: <AddChapter />,
+      },
+      {
+        path: "add-subject",
+        element: <AddSubject/>,
       },
     ],
   },

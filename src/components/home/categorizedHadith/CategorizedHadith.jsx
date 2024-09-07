@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../container/Container";
 import CategoryCards from "../../categorizedHadith/CategoryCards";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const CategorizedHadith = () => {
+  const route =
+  import.meta.env.VITE_ENVIRONMENT == "development"
+    ? import.meta.env.VITE_LOCALHOST
+    : import.meta.env.VITE_PROD;
+  const [categories, setCategories] = useState([]);
   const { lang } = useSelector((state) => state.language);
   const content = {
     desc: {
@@ -11,6 +17,22 @@ const CategorizedHadith = () => {
       bn: " বিষয়ভিত্তিক হাদীস হল হাদীসের সংগ্রহ যা বর্ণনাকারী বা ট্রান্সমিশনের চেইন দ্বারা নয় বরং বিষয় অনুসারে সংগঠিত হয়। এর মাধ্যমে খুব সহজেই ইসলামের নির্দিষ্ট কিছু বিষয়ে জ্ঞান অর্জন করা সম্ভব। এই সংকলনটি পণ্ডিত এবং শিক্ষকদের জন্যও সহায়ক হতে পারে যারা নির্দিষ্ট বিষয় পড়াতে চান।",
     },
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios(`${route}/subjects`, {
+          withCredentials: true,
+        });
+        if (res.status == 200) {
+          setCategories(res.data.response);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <Container>
       <div className="text-center dark:bg-[#312c2a] dark:text-[#fefdf8] py-14 lg:pt-20 sticky z-10 bg-[#fefdf8]">
@@ -31,7 +53,7 @@ const CategorizedHadith = () => {
         <p className="text-lg w-[80%] lg:w-[60%] mx-auto mt-6 lg:mt-10 leading-8 tracking-wide font-medium">
         {content.desc[lang]}
         </p>
-        <CategoryCards />
+        <CategoryCards categories={categories} />
       </div>
     </Container>
   );

@@ -1,46 +1,39 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
-const AddChapter = () => {
+const AddSubject = () => {
   const { register, handleSubmit } = useForm();
-  const [books, setBooks] = useState([]);
-  const [hadiths, setHadiths] = useState([]);
+  const [subjects, setSubjects] = useState([]);
   const route =
     import.meta.env.VITE_ENVIRONMENT == "development"
       ? import.meta.env.VITE_LOCALHOST
       : import.meta.env.VITE_PROD;
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`${route}/hadith-books`);
+      const res = await fetch(`${route}/subjects`);
       // const res = await fetch(`/hadithBook.json`);
       const data = await res.json();
       if (data?.length > 0) {
-        setBooks(data);
+        setSubjects(data);
       } else {
-        setBooks([]);
+        setSubjects([]);
       }
     };
     fetchData();
   }, []);
   const handlePostData = async (data) => {
-    const chapterData = {
+    const subjectData = {
       name: {
-        en: data.chapterNameEn,
-        bn: data.chapterNameBn,
+        en: data.subjectNameEn,
+        bn: data.subjectNameBn,
       },
-      book_id: data.book_id,
     };
-    console.log(chapterData);
     try {
-      const res = await axios.post(
-        `${route}/hadith-books/chapter/add`,
-        chapterData,
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.post(`${route}/subjects`, subjectData, {
+        withCredentials: true,
+      });
       if (res.status == 200) {
         toast.success("Added successfully");
         console.log(res);
@@ -49,7 +42,9 @@ const AddChapter = () => {
         console.log(res);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message || "something went wrong");
+        const string = error.response?.data?.message;
+        const duplicate = string.includes("duplicate");
+        toast.error( duplicate? "duplicate entry": "something went wrong");
       console.log(error);
     }
   };
@@ -61,28 +56,15 @@ const AddChapter = () => {
       >
         <input
           className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
-          {...register("chapterNameEn")}
-          placeholder="Chapter Name - English"
+          {...register("subjectNameEn")}
+          placeholder="Subject Name - English"
         />
         <input
           className="py-1.5 px-3.5 rounded-md  border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
-          {...register("chapterNameBn")}
-          placeholder="Chapter Name - Bangla"
+          {...register("subjectNameBn")}
+          placeholder="Subject Name - Bangla"
         />
 
-        <select
-          className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
-          {...register("book_id")}
-        >
-          <option disabled selected>
-            Select Book
-          </option>
-          {books.map((book) => (
-            <option value={book._id} key={book._id}>
-              {book.name["en"]}
-            </option>
-          ))}
-        </select>
         <button
           type="submit"
           className="btn text-white font-semibold py-1 px-3.5 h-10 min-h-0 rounded-md dark:border-stone-700 bg-[#5ab270] hover:bg-[#5ab270] dark:bg-[#24201e]"
@@ -94,4 +76,4 @@ const AddChapter = () => {
   );
 };
 
-export default AddChapter;
+export default AddSubject;

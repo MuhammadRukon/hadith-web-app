@@ -2,10 +2,14 @@ import PageContainer from "../../components/container/PageContainer";
 import Container from "../../components/container/Container";
 import BookTabWithCategory from "../../components/bookPage/BookTabWithCategory";
 import { useEffect, useState } from "react";
+import HadithWapper from "../../components/wrapper/HadithWapper";
+import axios from "axios";
 
 const BookPage = () => {
   const [books, setBooks] = useState([]);
   const [hadiths, setHadiths] = useState([]);
+  const [chapterId, setChapterId] = useState('');
+  const [bookId, setBookId] = useState('');
   const route =
     import.meta.env.VITE_ENVIRONMENT == "development"
       ? import.meta.env.VITE_LOCALHOST
@@ -23,17 +27,35 @@ const BookPage = () => {
     };
     fetchData();
   }, []);
+
+  useEffect(()=>{
+ 
+    const fetchData = async ()=>{
+     try {
+      const response = await axios( `${route}/hadiths?book_id=${bookId}&chapter_id=${chapterId}`)
+     if(response.status == 200){
+      setHadiths(response.data.response)
+     }
+    } catch (error) {
+      console.log(error);
+     }
+    }
+   bookId && chapterId && fetchData();
+  },  [bookId,chapterId])
+  useEffect(()=>{
+   books.length && setChapterId(books[0].chapters[0]._id)
+  },[books])
   return (
     <PageContainer>
       <Container>
         <div className="md:flex justify-between">
           <div className="w-full md:w-[18%] flex flex-col">
             {books.map((book) => (
-              <BookTabWithCategory key={book._id} item={book} setHadiths={setHadiths} />
+              <BookTabWithCategory key={book._id} item={book} chapterId={chapterId} setChapterId={setChapterId} setBookId={setBookId}/>
             ))}
           </div>
-          <div className="md:w-[80.5%] rounded-lg p-4 my-2 shadow-[0_2px_7px_rgba(0,0,0,0.13)] min-h-[calc(100vh-235px)] dark:bg-stone-800 h-16">
-            {hadiths.length}
+          <div className="w-[80%]">
+          <HadithWapper hadiths={hadiths}/>
           </div>
         </div>
       </Container>
