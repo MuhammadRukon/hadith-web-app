@@ -30,6 +30,10 @@ const AddSubject = () => {
         bn: data.subjectNameBn,
       },
     };
+    if(!subjectData.name.en || !subjectData.name.bn) {
+      toast.error("emply fields");
+      return;
+    }
     try {
       const res = await axios.post(`${route}/subjects`, subjectData, {
         withCredentials: true,

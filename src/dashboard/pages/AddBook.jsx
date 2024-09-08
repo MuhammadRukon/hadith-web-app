@@ -6,7 +6,7 @@ const AddBook = () => {
   const route = import.meta.env.VITE_ENVIRONMENT == "development" ? (import.meta.env.VITE_LOCALHOST):(import.meta.env.VITE_PROD);
   console.log(route);
   const handlePostData = async (data) => {
-    if(data.bookNameEn == "" || data.bookNameBn==""){
+    if(!data.bookNameEn || !data.bookNameBn){
       toast.error("emply fields");
       return;
     }

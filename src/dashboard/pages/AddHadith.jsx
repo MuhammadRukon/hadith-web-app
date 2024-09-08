@@ -4,7 +4,7 @@ import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 const AddHadith = () => {
-  const { register, handleSubmit , reset} = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [books, setBooks] = useState([]);
   const [chapters, setChapters] = useState([]);
   const [subjects, setSubjects] = useState([]);
@@ -95,6 +95,7 @@ const AddHadith = () => {
       text: {
         en: data.textEn,
         bn: data.textBn,
+        ar: data.textAr
       },
       authenticity: {
         en: grade.en,
@@ -110,18 +111,20 @@ const AddHadith = () => {
       subject_id: data.subject_id,
     };
     if (
-      hadithData.text.en == "" ||
-      hadithData.text.bn == "" ||
-      hadithData.narrator.en == "" ||
-      hadithData.narrator.bn == "" ||
-      hadithData.authenticity.en == "" ||
-      hadithData.authenticity.bn == "" ||
-      hadithData.chapter_id == "" ||
-      hadithData.book_id == "" ||
-      hadithData.subject_id == ""||
-      hadithData.colorCode == ""
+      !hadithData.text.en ||
+      !hadithData.text.bn ||
+      !hadithData.text.ar||
+      !hadithData.narrator.en ||
+      !hadithData.narrator.bn ||
+      !hadithData.authenticity.en ||
+      !hadithData.authenticity.bn ||
+      !hadithData.chapter_id ||
+      !hadithData.book_id ||
+      !hadithData.subject_id ||
+      !hadithData.colorCode
     ) {
-      return toast.error("emply fields");
+      toast.error("emply fields");
+      return;
     }
     try {
       const res = await axios.post(`${route}/hadiths`, hadithData, {
@@ -130,7 +133,7 @@ const AddHadith = () => {
       if (res.status == 200) {
         toast.success("Added successfully");
         console.log(res);
-  // reset()
+        // reset()
       }
     } catch (error) {
       toast.error("something went wrong");
@@ -145,6 +148,11 @@ const AddHadith = () => {
       >
         <textarea
           className="py-1.5 resize-none px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
+          {...register("textAr")}
+          placeholder="Hadith - Arabic"
+        />
+        <textarea
+          className="py-1.5 resize-none px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           {...register("textEn")}
           placeholder="Hadith - English"
         />
@@ -153,7 +161,7 @@ const AddHadith = () => {
           {...register("textBn")}
           placeholder="Hadith - Bangla"
         />
-        <select
+        <select required
           className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           onChange={(e) =>
             setGrade(grades.find((grade) => grade.id == e.target.value))
@@ -173,7 +181,7 @@ const AddHadith = () => {
         <input
           className="py-1.5 px-3.5 resize-none rounded-md  border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           {...register("narratorEn")}
-          placeholder="Narrator - Bangla"
+          placeholder="Narrator - English"
         />
         <input
           className="py-1.5 px-3.5 resize-none rounded-md  border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
@@ -200,7 +208,7 @@ const AddHadith = () => {
           className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           {...register("chapter_id")}
         >
-          <option disabled selected>
+          <option disabled selected >
             Select Chapter
           </option>
           {chapters.map((chapter) => (

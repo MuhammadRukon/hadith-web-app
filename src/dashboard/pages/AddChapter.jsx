@@ -32,7 +32,10 @@ const AddChapter = () => {
       },
       book_id: data.book_id,
     };
-    console.log(chapterData);
+    if(!chapterData.name.en || !chapterData.name.bn || !chapterData.book_id) {
+      toast.error("emply fields");
+      return;
+    }
     try {
       const res = await axios.post(
         `${route}/hadith-books/chapter/add`,

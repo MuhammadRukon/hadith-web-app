@@ -10,6 +10,7 @@ import AddChapter from "../dashboard/pages/AddChapter";
 import MainLayout from "../layout/MainLayout";
 import BookPage from "../pages/book/BookPage";
 import AddSubject from "../dashboard/pages/AddSubject";
+import ProfilePage from "../dashboard/pages/ProfilePage";
 
 export const routes = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const routes = createBrowserRouter([
       {
         path: "add-subject",
         element: <AddSubject/>,
+      },
+      {
+        path: "profile",
+        element: <ProfilePage/>,
       },
     ],
   },

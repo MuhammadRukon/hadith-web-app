@@ -54,7 +54,7 @@ const BookPage = () => {
               <BookTabWithCategory key={book._id} item={book} chapterId={chapterId} setChapterId={setChapterId} setBookId={setBookId}/>
             ))}
           </div>
-          <div className="w-[80%]">
+          <div className="md:w-[80%]">
           <HadithWapper hadiths={hadiths}/>
           </div>
         </div>
