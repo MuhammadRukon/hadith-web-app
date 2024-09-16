@@ -5,16 +5,16 @@ import ChapterTab from "../components/homepage/chapterTab";
 import HadithWrapper from "../components/homepage/HadithWrapper";
 import useGetSingleBook from "../../hooks/useGetSingleBook";
 import { useNavigate, useParams } from "react-router-dom";
+import useGetBooks from "../../hooks/useGetBooks";
 
 const DashboardBookPage = () => {
   const [chapterId, setChapterId] = useState("");
   const [bookId, setBookId] = useState("");
   const [refetch, setRefetch] = useState(false);
   const [refetch2, setRefetch2] = useState(false);
-  const { id } = useParams();
   const navigate = useNavigate();
   const hadiths = useGetHadiths(bookId, chapterId, refetch);
-  const bookArray = useGetSingleBook(id, refetch2);
+  const bookArray = useGetBooks(refetch2);
   useEffect(() => {
     if (bookArray[0]?.chapters?.length <= 0) {
       navigate("/dashboard");

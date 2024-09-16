@@ -17,6 +17,7 @@ const ChapterTab = ({
   const { lang } = useSelector((state) => state.language);
   useEffect(() => {
     setBookId(id);
+    setChapterId(item?.chapters[0]?._id);
   }, [id]);
 
   const handleDeleteChapter = async (id) => {
@@ -43,7 +44,6 @@ const ChapterTab = ({
       }
     });
   };
-
   return (
     <>
       {item?.chapters?.map((chapter) => {
