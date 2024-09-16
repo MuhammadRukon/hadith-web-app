@@ -2,15 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { route } from "../../routes/Routes";
 
 const AddChapter = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [books, setBooks] = useState([]);
   const [hadiths, setHadiths] = useState([]);
-  const route =
-    import.meta.env.VITE_ENVIRONMENT == "development"
-      ? import.meta.env.VITE_LOCALHOST
-      : import.meta.env.VITE_PROD;
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/hadith-books`);
@@ -32,7 +30,7 @@ const AddChapter = () => {
       },
       book_id: data.book_id,
     };
-    if(!chapterData.name.en || !chapterData.name.bn || !chapterData.book_id) {
+    if (!chapterData.name.en || !chapterData.name.bn || !chapterData.book_id) {
       toast.error("emply fields");
       return;
     }
@@ -46,7 +44,7 @@ const AddChapter = () => {
       );
       if (res.status == 200) {
         toast.success("Added successfully");
-        console.log(res);
+        reset();
       } else {
         toast.error("something went wrong");
         console.log(res);
@@ -57,7 +55,7 @@ const AddChapter = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-[70.74vh]">
+    <div className="flex justify-center items-center min-h-[73.49vh]">
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit((data) => handlePostData(data))}

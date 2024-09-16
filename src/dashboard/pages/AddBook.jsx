@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { route } from "../../routes/Routes";
 
 const AddBook = () => {
-  const { register, handleSubmit } = useForm();
-  const route = import.meta.env.VITE_ENVIRONMENT == "development" ? (import.meta.env.VITE_LOCALHOST):(import.meta.env.VITE_PROD);
-  console.log(route);
+  const { register, handleSubmit, reset } = useForm();
+
   const handlePostData = async (data) => {
-    if(!data.bookNameEn || !data.bookNameBn){
+    if (!data.bookNameEn || !data.bookNameBn) {
       toast.error("emply fields");
       return;
     }
@@ -22,6 +22,7 @@ const AddBook = () => {
         console.log(data);
         if (data && data.status == 200) {
           toast.success("Added successfully");
+          reset();
         } else if (data && data.status == 500) {
           toast.error("already exists");
         } else {
@@ -30,7 +31,7 @@ const AddBook = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center min-h-[70.74vh]">
+    <div className="flex justify-center items-center min-h-[73.49vh]">
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit((data) => handlePostData(data))}

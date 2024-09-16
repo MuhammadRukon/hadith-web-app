@@ -2,14 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { route } from "../../routes/Routes";
 
 const AddSubject = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [subjects, setSubjects] = useState([]);
-  const route =
-    import.meta.env.VITE_ENVIRONMENT == "development"
-      ? import.meta.env.VITE_LOCALHOST
-      : import.meta.env.VITE_PROD;
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/subjects`);
@@ -30,7 +28,7 @@ const AddSubject = () => {
         bn: data.subjectNameBn,
       },
     };
-    if(!subjectData.name.en || !subjectData.name.bn) {
+    if (!subjectData.name.en || !subjectData.name.bn) {
       toast.error("emply fields");
       return;
     }
@@ -40,20 +38,20 @@ const AddSubject = () => {
       });
       if (res.status == 200) {
         toast.success("Added successfully");
-        console.log(res);
+        reset();
       } else {
         toast.error("something went wrong");
         console.log(res);
       }
     } catch (error) {
-        const string = error.response?.data?.message;
-        const duplicate = string.includes("duplicate");
-        toast.error( duplicate? "duplicate entry": "something went wrong");
+      const string = error.response?.data?.message;
+      const duplicate = string.includes("duplicate");
+      toast.error(duplicate ? "duplicate entry" : "something went wrong");
       console.log(error);
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-[70.74vh]">
+    <div className="flex justify-center items-center min-h-[73.49vh]">
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit((data) => handlePostData(data))}

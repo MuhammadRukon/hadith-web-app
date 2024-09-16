@@ -5,7 +5,6 @@ import { Link, useParams } from "react-router-dom";
 const BookTabWithCategory = ({ item, setBookId, setChapterId }) => {
   const { lang } = useSelector((state) => state.language);
 
-  const bookId = item._id;
   const { id } = useParams();
   const isSelected = id == item._id;
 

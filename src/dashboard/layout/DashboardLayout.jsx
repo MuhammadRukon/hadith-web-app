@@ -17,7 +17,7 @@ const DashboardLayout = () => {
         <Sidebar isActive={isActive} setIsActive={setIsActive} />
         <div className="w-full">
           <TopNav isActive={isActive} setIsActive={setIsActive} />
-          <div className="px-6 mt-[25px] rounded-2xl py-[27px]">
+          <div className=" rounded-2xl py-[27px]">
             <Outlet />
           </div>
           <Footer dashboard={true} />

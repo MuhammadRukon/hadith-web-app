@@ -11,6 +11,12 @@ import MainLayout from "../layout/MainLayout";
 import BookPage from "../pages/book/BookPage";
 import AddSubject from "../dashboard/pages/AddSubject";
 import ProfilePage from "../dashboard/pages/ProfilePage";
+import DashboardBookPage from "../dashboard/pages/DashboardBookPage";
+
+export const route =
+  import.meta.env.VITE_ENVIRONMENT == "development"
+    ? import.meta.env.VITE_LOCALHOST
+    : import.meta.env.VITE_PROD;
 
 export const routes = createBrowserRouter([
   {
@@ -31,7 +37,7 @@ export const routes = createBrowserRouter([
       },
       {
         path: "/hadith-books/:id",
-        element: <BookPage/>,
+        element: <BookPage />,
       },
     ],
   },
@@ -42,6 +48,10 @@ export const routes = createBrowserRouter([
       {
         index: true,
         element: <DashboardHome />,
+      },
+      {
+        path: "books/:id",
+        element: <DashboardBookPage />,
       },
       {
         path: "add-hadith-book",
@@ -57,11 +67,11 @@ export const routes = createBrowserRouter([
       },
       {
         path: "add-subject",
-        element: <AddSubject/>,
+        element: <AddSubject />,
       },
       {
         path: "profile",
-        element: <ProfilePage/>,
+        element: <ProfilePage />,
       },
     ],
   },

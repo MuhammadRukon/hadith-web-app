@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { set, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { route } from "../../routes/Routes";
 
 const AddHadith = () => {
   const { register, handleSubmit, reset } = useForm();
@@ -42,16 +43,10 @@ const AddHadith = () => {
       colorCode: "#E5E4E2",
     },
   ];
-  const route =
-    import.meta.env.VITE_ENVIRONMENT == "development"
-      ? import.meta.env.VITE_LOCALHOST
-      : import.meta.env.VITE_PROD;
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/hadith-books`);
-      // const res = await fetch(`/hadithBook.json`);
-
       const bookData = await res.json();
       if (bookData?.length > 0) {
         setBooks(bookData);
@@ -95,7 +90,7 @@ const AddHadith = () => {
       text: {
         en: data.textEn,
         bn: data.textBn,
-        ar: data.textAr
+        ar: data.textAr,
       },
       authenticity: {
         en: grade.en,
@@ -113,7 +108,7 @@ const AddHadith = () => {
     if (
       !hadithData.text.en ||
       !hadithData.text.bn ||
-      !hadithData.text.ar||
+      !hadithData.text.ar ||
       !hadithData.narrator.en ||
       !hadithData.narrator.bn ||
       !hadithData.authenticity.en ||
@@ -133,7 +128,7 @@ const AddHadith = () => {
       if (res.status == 200) {
         toast.success("Added successfully");
         console.log(res);
-        // reset()
+        reset();
       }
     } catch (error) {
       toast.error("something went wrong");
@@ -141,7 +136,7 @@ const AddHadith = () => {
     }
   };
   return (
-    <div className="flex justify-center items-center min-h-[70.74vh]">
+    <div className="flex justify-center items-center min-h-[73.49vh]">
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit((data) => handlePostData(data))}
@@ -161,7 +156,8 @@ const AddHadith = () => {
           {...register("textBn")}
           placeholder="Hadith - Bangla"
         />
-        <select required
+        <select
+          required
           className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           onChange={(e) =>
             setGrade(grades.find((grade) => grade.id == e.target.value))
@@ -208,7 +204,7 @@ const AddHadith = () => {
           className="py-1.5 px-3.5 rounded-md border placeholder:font-light placeholder:text-sm border-stone-200 focus:outline-stone-300"
           {...register("chapter_id")}
         >
-          <option disabled selected >
+          <option disabled selected>
             Select Chapter
           </option>
           {chapters.map((chapter) => (

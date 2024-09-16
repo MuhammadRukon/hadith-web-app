@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const HadithCard = ({ hadith }) => {
-  console.log(hadith);
   const { lang } = useSelector((state) => state.language);
   return (
     <div className="tracking-wider bg-[#fff9ef] shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:bg-stone-900 dark:text-[#dadada] rounded-lg p-5 text-base lg:text-lg">

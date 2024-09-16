@@ -3,17 +3,13 @@ import Container from "../../components/container/Container";
 import BookTab from "../../components/HadithBookPage/BookTab";
 import PageContainer from "../../components/container/PageContainer";
 import { useEffect, useState } from "react";
+import { route } from "../../routes/Routes";
 
 const HadithBooksPage = () => {
   const [books, setBooks] = useState([]);
-  const route =
-    import.meta.env.VITE_ENVIRONMENT == "development"
-      ? import.meta.env.VITE_LOCALHOST
-      : import.meta.env.VITE_PROD;
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/hadith-books`);
-      // const res = await fetch(`/hadithBook.json`);
       const data = await res.json();
       if (data?.length > 0) {
         setBooks(data);

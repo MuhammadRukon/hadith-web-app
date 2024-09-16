@@ -10,27 +10,26 @@ import Logo from "../../components/logo/Logo";
 import { BsFillChatLeftQuoteFill } from "react-icons/bs";
 import { isAnyOf } from "@reduxjs/toolkit";
 
-const Sidebar = ({isActive, setIsActive}) => {
+const Sidebar = ({ isActive, setIsActive }) => {
   const handleLogout = () => {
     console.log("logged out button clicked");
   };
 
-  const handleToggle = () =>{
-   setIsActive(false)
-  }
+  const handleToggle = () => {
+    setIsActive(false);
+  };
   return (
     <div>
-
       {/* Sidebar */}
       <div
         className={`z-10 md:h-[calc(100vh-54px)] absolute top-0 md:static flex flex-col rounded-2xl justify-between bg-[#5ab270] dark:bg-[#24201e] w-64 space-y-6 px-2 py-4 transform ${
-          !isActive ? "-translate-x-72":"-translate-x-1"
+          !isActive ? "-translate-x-72" : "-translate-x-1"
         }  top-[18px] md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div className="relative">
             <div className="w-full md:flex bg-transparent px-4 py-2 justify-center items-center mx-auto">
-              <Logo dashboard={true}/>
+              <Logo dashboard={true} />
             </div>
             <div
               className="text-red-600 absolute top-1 md:hidden right-1"
@@ -56,13 +55,13 @@ const Sidebar = ({isActive, setIsActive}) => {
               />
               <MenuItem
                 icon={BsFillChatLeftQuoteFill}
-                label="Add Hadith"
-                address="add-hadith"
+                label="Add Subject"
+                address="add-subject"
               />
               <MenuItem
                 icon={BsFillChatLeftQuoteFill}
-                label="Add Subject"
-                address="add-subject"
+                label="Add Hadith"
+                address="add-hadith"
               />
             </nav>
           </div>

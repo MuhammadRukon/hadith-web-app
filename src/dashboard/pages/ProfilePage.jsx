@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const ProfilePage = () => {
-  return (
-    <div className="min-h-[70.74vh]"> Profile</div>
-  )
-}
+  return <div className="min-h-[73.49vh]"> Profile</div>;
+};
 
-export default ProfilePage
+export default ProfilePage;
