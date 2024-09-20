@@ -1,19 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import banner from "./../../../assets/banner.svg";
-import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Banner = () => {
   const { lang } = useSelector((state) => state.language);
-  const content = {
-    desc:{
-      en:"The Messenger of Allah (PBUH) said: When a Muslim performs ablution properly, faces Allah with concentration and prays two rak'ahs, Paradise is guaranteed for him.",
-      bn:"রাসুলুল্লাহ (সাঃ) বলেছেনঃ যখন কোন মুসলমান সঠিকভাবে ওযু করে, একাগ্রতার সাথে আল্লাহর দিকে মুখ করে এবং দুই রাকাত নামায পড়ে, তখন তার জন্য জান্নাত নিশ্চিত করা হয়।"
-    },
-    search:{
-      en:"Search",
-      bn:"খুঁজুন"
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    if (search.length > 0) {
+      navigate("/hadith", { state: { searchQuery: search } });
     }
+  };
+  const content = {
+    desc: {
+      en: "The Messenger of Allah (PBUH) said: When a Muslim performs ablution properly, faces Allah with concentration and prays two rak'ahs, Paradise is guaranteed for him.",
+      bn: "রাসুলুল্লাহ (সাঃ) বলেছেনঃ যখন কোন মুসলমান সঠিকভাবে ওযু করে, একাগ্রতার সাথে আল্লাহর দিকে মুখ করে এবং দুই রাকাত নামায পড়ে, তখন তার জন্য জান্নাত নিশ্চিত করা হয়।",
+    },
+    search: {
+      en: "Search",
+      bn: "খুঁজুন",
+    },
   };
   return (
     <div className="bg-[#fff9ef] dark:bg-[#312c2a] relative overflow-hidden">
@@ -30,33 +37,29 @@ const Banner = () => {
           className="hero-content text-center text-neutral-content"
         >
           <div className="max-w-md lg:max-w-3xl ">
-            <h1
-              className="text-4xl lg:text-6xl font-secondary font-bold text-[#5ab270]">
+            <h1 className="text-4xl lg:text-6xl font-secondary font-bold text-[#5ab270]">
               {lang == "en" ? (
                 <>
                   Find your favourite
-                  <span className="text-[#f3c556]">{" "}hadith</span>
+                  <span className="text-[#f3c556]"> hadith</span>
                 </>
               ) : (
                 <>
-                  আপনার প্রিয় <span className="text-[#f3c556]">হাদিস</span>
-                  {" "}খুঁজুন
+                  আপনার প্রিয় <span className="text-[#f3c556]">হাদিস</span>{" "}
+                  খুঁজুন
                 </>
               )}
             </h1>
             <label className="input w-[90%] lg:w-[75%] dark:dark:bg-[#24201e] h-14 mt-6 max-w-[500px] mx-auto focus:outline-none focus-within:outline-none input-bordered flex items-center justify-between gap-2 pr-1.5">
               <input
-              className="w-full text-[#0e1037] dark:text-white"
+                onChange={(e) => setSearch(e.target.value)}
+                value={search}
+                className="w-full text-[#0e1037] dark:text-white"
                 type="text"
                 placeholder={content.search[lang]}
               />
               <button
-                onClick={() =>
-                  toast("searching option is under development.", {
-                    duration: 2000,
-                    id: "id",
-                  })
-                }
+                onClick={handleSearch}
                 className="btn flex items-center gap-1 dark:border-[#5ab270] text-[#fefdf8] pr-3 md:pr-5 pl-1.5 md:pl-3 h-fit min-h-0 rounded-none rounded-r-md py-2.5 bg-[#5ab270] hover:bg-[#5ab270] "
               >
                 <svg
@@ -74,7 +77,11 @@ const Banner = () => {
                 {content.search[lang]}
               </button>
             </label>
-            <p className={`text-[#0e1037] dark:text-[#fefdf8] text-lg lg:text-xl  ${lang=='bn'?"font-normal":"font-semibold"} mt-8`}>
+            <p
+              className={`text-[#0e1037] dark:text-[#fefdf8] text-lg lg:text-xl  ${
+                lang == "bn" ? "font-normal" : "font-semibold"
+              } mt-8`}
+            >
               {content.desc[lang]}
             </p>
           </div>

@@ -5,18 +5,16 @@
 @tailwind components;
 @tailwind utilities;
 
-
 ::-webkit-scrollbar {
-    width: 6px;
-    background: #fff9ef;
-  }
-  
+  width: 6px;
+  background: #fff9ef;
+}
+
 ::-webkit-scrollbar-thumb {
-    background: #f3c556;
-    border-radius: 6px;
-    
-  }
-  
+  background: #f3c556;
+  border-radius: 6px;
+}
+
 /* .dark-scroller::-webkit-scrollbar {
   width: 10px;
   background: #312c2a;
@@ -26,3 +24,8 @@
   background: #1c1917;
   border-radius: 6px; 
 } */
+
+.active {
+  color: #f3c556;
+  font-weight: bolder;
+}

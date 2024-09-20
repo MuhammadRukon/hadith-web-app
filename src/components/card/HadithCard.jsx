@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-
+import { FaHeart } from "react-icons/fa";
+import { AuthContext } from "../../provider/AuthProvider";
+import toast from "react-hot-toast";
+import AddBookmark from "../../api/AddBookmark";
 const HadithCard = ({ hadith }) => {
   const { lang } = useSelector((state) => state.language);
+  const { user } = useContext(AuthContext);
+  const handleBookmark = async (id) => {
+    if (!user) {
+      toast("please login to bookmark");
+    } else {
+      const response = await AddBookmark({ hadith: id, email: user.email });
+      console.log(response);
+    }
+  };
   return (
     <div className="tracking-wider bg-[#fff9ef] shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:bg-stone-900 dark:text-[#dadada] rounded-lg p-5 text-base lg:text-lg">
       <p className="">
@@ -16,15 +28,23 @@ const HadithCard = ({ hadith }) => {
           {hadith.text.ar}
         </p>
       </div>
-      <p className="w-fit text-sm lg:text-base flex items-center gap-3">
-        Authenticity:{" "}
+      <div className="flex justify-start gap-4 items-center">
+        <p className="w-fit text-sm lg:text-base flex items-center gap-3">
+          Authenticity:{" "}
+          <span
+            className="py-0.5 px-2 text:xs lg:text-sm rounded-md text-black font-bold"
+            style={{ background: hadith.colorCode }}
+          >
+            {hadith?.authenticity[lang]}
+          </span>
+        </p>
         <span
-          className="py-0.5 px-2 text:xs lg:text-sm rounded-md text-black font-bold"
-          style={{ background: hadith.colorCode }}
+          className="cursor-pointer"
+          onClick={() => handleBookmark(hadith._id)}
         >
-          {hadith?.authenticity[lang]}
+          <FaHeart />
         </span>
-      </p>
+      </div>
     </div>
   );
 };

@@ -2,8 +2,18 @@ import PageContainer from "../../components/container/PageContainer";
 import Container from "../../components/container/Container";
 import { useEffect, useState } from "react";
 import HadithWapper from "../../components/wrapper/HadithWapper";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const HadithPage = () => {
+  const location = useLocation();
+  const searchQuery = location.state?.searchQuery;
+  console.log(searchQuery, "searchQuery");
+  // const fetchData = async () => {
+  //   // const res = await axios(`${route}/search-hadith?q=${search}`);
+  //   console.log(res, "res");
+  // };
+  // fetchData();
   const [hadiths, setHadiths] = useState([]);
   const route =
     import.meta.env.VITE_ENVIRONMENT == "development"
@@ -11,12 +21,14 @@ const HadithPage = () => {
       : import.meta.env.VITE_PROD;
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch(`${route}/hadiths`);
-      // const res = await fetch(`/hadithBook.json`);
-      const data = await res.json();
+      let res;
+      if (searchQuery)
+        res = await axios(`${route}/search-hadith?q=${searchQuery}`);
+      else res = await axios(`${route}/hadiths`);
+      console.log(res, "res");
 
-      if (data.status == 200) {
-        setHadiths(data.response);
+      if (res.status == 200) {
+        setHadiths(res.data.response);
       } else {
         setHadiths([]);
       }

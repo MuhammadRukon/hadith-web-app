@@ -12,6 +12,10 @@ import BookPage from "../pages/book/BookPage";
 import AddSubject from "../dashboard/pages/AddSubject";
 import ProfilePage from "../dashboard/pages/ProfilePage";
 import DashboardBookPage from "../dashboard/pages/DashboardBookPage";
+import Login from "../pages/login/Login";
+import SignUp from "../pages/signup/Signup";
+import AdminRoute from "./AdminRoute";
+import Bookmarks from "../pages/bookmark/Bookmarks";
 
 export const route =
   import.meta.env.VITE_ENVIRONMENT == "development"
@@ -39,15 +43,25 @@ export const routes = createBrowserRouter([
         path: "/hadith-books/:id",
         element: <BookPage />,
       },
+      {
+        path: "/bookmarks",
+        element: <Bookmarks />,
+      },
     ],
   },
+  { path: "/login", element: <Login /> },
+  { path: "/signup", element: <SignUp /> },
   {
     path: "/dashboard",
     element: <DashboardLayout />,
     children: [
       {
         index: true,
-        element: <DashboardHome />,
+        element: (
+          <AdminRoute>
+            <DashboardHome />
+          </AdminRoute>
+        ),
       },
       {
         path: "books/:id",
