@@ -11,6 +11,7 @@ const HomePage = () => {
       duration: 600,
     });
   }, []);
+
   return (
     <>
       <Banner />

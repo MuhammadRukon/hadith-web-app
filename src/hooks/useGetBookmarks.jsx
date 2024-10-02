@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import { route } from "../routes/Routes";
 
 function useGetBookmarks() {
-  const { user } = useContext(AuthContext);
+  const { user, refetch } = useContext(AuthContext);
   const [bookmarks, setBookmarks] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -16,7 +16,7 @@ function useGetBookmarks() {
       }
     };
     user && fetchData();
-  }, [user]);
+  }, [user, refetch]);
 
   return bookmarks;
 }

@@ -67,7 +67,9 @@ const ChapterTab = ({
                 chapterId == chapter?._id ? " text-[red]" : "text-[#110404]"
               } text-xl md:text-2xl `}
               key={chapter?._id}
-              onClick={() => handleDeleteChapter(chapter?._id)}
+              onClick={() => {
+                console.log(chapter, item, "chapter, item");
+              }}
             >
               <MdDeleteForever />
             </div>

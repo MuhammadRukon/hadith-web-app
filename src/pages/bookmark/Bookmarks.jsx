@@ -4,7 +4,6 @@ import HadithCard from "../../components/card/HadithCard";
 
 function Bookmarks() {
   const bookmarks = useGetBookmarks();
-  console.log(bookmarks, "bookmarks");
   return (
     <div className="min-h-[calc(100vh-170px)] mt-6 container mx-auto px-4 flex flex-col gap-5">
       {bookmarks?.map((bookmark) => (

@@ -9,6 +9,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { app } from "../config/firebase.config";
+import useGetBookmarks from "../hooks/useGetBookmarks";
+import { useSelector } from "react-redux";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -22,7 +24,10 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
-
+  const [refetch, setRefetch] = useState(false);
+  const handleToggleRefetch = () => {
+    setRefetch(!refetch);
+  };
   const signIn = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -60,6 +65,8 @@ const AuthProvider = ({ children }) => {
     // resetPassword,
     logOut,
     updateUserProfile,
+    refetch,
+    handleToggleRefetch,
   };
 
   return (

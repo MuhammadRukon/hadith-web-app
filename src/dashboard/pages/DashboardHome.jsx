@@ -73,7 +73,13 @@ const DashboardHome = () => {
             <BookTab key={book._id} item={book} />
             <div
               className="cursor-pointer"
-              onClick={() => handleDeleteBook(book._id)}
+              onClick={() => {
+                if (!book?.hadith_range.en) {
+                  handleDeleteBook(book._id);
+                } else {
+                  toast.error("Cannot delete. Book has hadith/s");
+                }
+              }}
             >
               <MdDeleteForever size={30} color="red" />
             </div>
@@ -90,7 +96,13 @@ const DashboardHome = () => {
             <BookTab key={subject?._id} item={subject} />
             <div
               className="cursor-pointer"
-              onClick={() => handleDeleteSubject(subject?._id)}
+              onClick={() => {
+                if (!subject?.hadith_range.en) {
+                  handleDeleteSubject(subject?._id);
+                } else {
+                  toast.error("Cannot delete. Subject has hadith/s");
+                }
+              }}
             >
               <MdDeleteForever size={30} color="red" />
             </div>
