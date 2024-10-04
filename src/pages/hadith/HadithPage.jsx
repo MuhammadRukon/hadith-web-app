@@ -4,21 +4,13 @@ import { useEffect, useState } from "react";
 import HadithWapper from "../../components/wrapper/HadithWapper";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { route } from "../../routes/Routes";
 
 const HadithPage = () => {
   const location = useLocation();
   const searchQuery = location.state?.searchQuery;
-  console.log(searchQuery, "searchQuery");
-  // const fetchData = async () => {
-  //   // const res = await axios(`${route}/search-hadith?q=${search}`);
-  //   console.log(res, "res");
-  // };
-  // fetchData();
   const [hadiths, setHadiths] = useState([]);
-  const route =
-    import.meta.env.VITE_ENVIRONMENT == "development"
-      ? import.meta.env.VITE_LOCALHOST
-      : import.meta.env.VITE_PROD;
+
   useEffect(() => {
     const fetchData = async () => {
       let res;
