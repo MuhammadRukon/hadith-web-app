@@ -10,6 +10,7 @@ import {
   deleteBookmark,
   setBookmarks,
 } from "../../redux/features/bookmarkSlice";
+import { useLocation } from "react-router-dom";
 
 const HadithCard = ({ hadith }) => {
   const { lang } = useSelector((state) => state.language);
@@ -17,14 +18,16 @@ const HadithCard = ({ hadith }) => {
   const { user, handleToggleRefetch, refetch } = useContext(AuthContext);
   const res = useGetBookmarks();
   const dispatch = useDispatch();
-  // Update Redux bookmarks when new bookmarks are fetched
+  const location = useLocation();
+  const showBookmark = !location.pathname.includes("dashboard");
+  console.log(showBookmark);
   useEffect(() => {
     if (res) {
       const bookmarksId = res.map((bookmark) => bookmark._id);
       dispatch(setBookmarks(bookmarksId));
     }
   }, [res, refetch]);
-  // Derive bookmarked state directly from Redux
+
   const [isBookmarked, setIsBookmarked] = useState(
     bookmarks.includes(hadith?._id)
   );
@@ -34,16 +37,15 @@ const HadithCard = ({ hadith }) => {
     } else {
       let response;
       if (isBookmarked) {
-        dispatch(deleteBookmark(id)); // Remove from Redux
+        dispatch(deleteBookmark(id));
         setIsBookmarked(false);
         response = await AddBookmark({ hadith: id, email: user.email }); // Ensure API removes
       } else {
-        dispatch(addBookmark(id)); // Add to Redux
+        dispatch(addBookmark(id));
         response = await AddBookmark({ hadith: id, email: user.email });
-        setIsBookmarked(true); // Ensure API adds
+        setIsBookmarked(true);
       }
 
-      // Optionally refetch only if there's an issue or need for server validation
       if (response) {
         handleToggleRefetch();
       }
@@ -72,13 +74,14 @@ const HadithCard = ({ hadith }) => {
             {hadith?.authenticity[lang]}
           </span>
         </p>
-        <span
-          className="cursor-pointer"
-          onClick={() => handleBookmark(hadith._id)}
-        >
-          <FaHeart color={isBookmarked ? "#f3c556" : "white"} />{" "}
-          {/* Use global bookmark state */}
-        </span>
+        {showBookmark && (
+          <span
+            className="cursor-pointer"
+            onClick={() => handleBookmark(hadith._id)}
+          >
+            <FaHeart color={isBookmarked ? "#f3c556" : "white"} />
+          </span>
+        )}
       </div>
     </div>
   );

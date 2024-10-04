@@ -18,7 +18,7 @@ const useGetRole = () => {
         setRole(response.data.role);
       }
     };
-    email && fetchData();
+    email ? fetchData() : setRole("");
   }, [email]);
   return role;
 };

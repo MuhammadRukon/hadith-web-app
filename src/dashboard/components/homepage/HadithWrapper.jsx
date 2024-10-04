@@ -35,8 +35,8 @@ const HadithWrapper = ({ hadiths, setRefetch, refetch }) => {
   return (
     <div className="w-full relative  rounded-lg p-4 my-2 space-y-5 shadow-[0_2px_7px_rgba(0,0,0,0.13)] min-h-[calc(100vh-235px)] dark:bg-stone-800">
       {hadiths?.map((hadith) => (
-        <div className="relative">
-          <HadithCard key={hadith._id} hadith={hadith} />
+        <div key={hadith._id} className="relative">
+          <HadithCard hadith={hadith} />
           <div
             className="cursor-pointer absolute top-3  right-8"
             onClick={() => handleDeleteHadith(hadith._id)}

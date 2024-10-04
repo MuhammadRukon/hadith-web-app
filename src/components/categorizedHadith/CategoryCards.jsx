@@ -1,6 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import Card from "./../bookOfHadith/Card";
 
 const CategoryCards = ({ categories }) => {
+  const navigate = useNavigate();
+  const handleSearch = (id) => {
+    navigate("/hadith", { state: { subject: id } });
+  };
   return (
     <div className="grid grid-cols-2 md:grid-cols-3 gap-10 mt-10  justify-between">
       {categories.length > 0
@@ -18,7 +23,9 @@ const CategoryCards = ({ categories }) => {
                   : "fade-left"
               }`}
             >
-              <Card item={category} />
+              <div onClick={() => handleSearch(category._id)}>
+                <Card item={category} />
+              </div>
             </div>
           ))
         : null}

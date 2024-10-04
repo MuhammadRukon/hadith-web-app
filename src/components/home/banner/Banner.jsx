@@ -7,7 +7,6 @@ const Banner = () => {
   const { lang } = useSelector((state) => state.language);
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
-  console.log(search, "search");
   const handleSearch = () => {
     if (search.length > 0) {
       navigate("/hadith", { state: { searchQuery: search } });

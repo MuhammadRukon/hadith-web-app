@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BookTab from "../components/homepage/BookTab";
 import { MdDeleteForever } from "react-icons/md";
 import { useState } from "react";
@@ -69,8 +69,13 @@ const DashboardHome = () => {
       <p className="text-white text-xl font-bold px-3">Hadith books</p>
       {bookArray.length ? (
         bookArray?.map((book) => (
-          <div className="flex items-center justify-between gap-2">
-            <BookTab key={book._id} item={book} />
+          <div
+            key={book._id}
+            className="flex items-center justify-between gap-2"
+          >
+            <Link className="w-full" to={`books/${book._id}`}>
+              <BookTab item={book} />
+            </Link>
             <div
               className="cursor-pointer"
               onClick={() => {
@@ -92,8 +97,14 @@ const DashboardHome = () => {
       <p className="text-white text-xl font-bold px-3 mt-6">Subjects</p>
       {subjectsArray.length ? (
         subjectsArray?.map((subject) => (
-          <div className="flex items-center justify-between gap-3">
-            <BookTab key={subject?._id} item={subject} />
+          <div
+            key={subject?._id}
+            className="flex items-center justify-between gap-3"
+          >
+            <Link className="w-full" to={`subjects/${subject._id}`}>
+              <BookTab item={subject} />
+            </Link>
+
             <div
               className="cursor-pointer"
               onClick={() => {

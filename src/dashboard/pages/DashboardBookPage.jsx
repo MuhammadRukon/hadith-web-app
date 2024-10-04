@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import useGetHadiths from "../../hooks/useGetHadiths";
 import ChapterTab from "../components/homepage/chapterTab";
 import HadithWrapper from "../components/homepage/HadithWrapper";
-import useGetSingleBook from "../../hooks/useGetSingleBook";
-import { useNavigate, useParams } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import useGetBooks from "../../hooks/useGetBooks";
 
 const DashboardBookPage = () => {

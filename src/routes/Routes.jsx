@@ -16,6 +16,7 @@ import Login from "../pages/login/Login";
 import SignUp from "../pages/signup/Signup";
 import AdminRoute from "./AdminRoute";
 import Bookmarks from "../pages/bookmark/Bookmarks";
+import DashboardSubjectPage from "../dashboard/pages/DashboardSubjectPage";
 
 export const route =
   import.meta.env.VITE_ENVIRONMENT == "development"
@@ -66,6 +67,10 @@ export const routes = createBrowserRouter([
       {
         path: "books/:id",
         element: <DashboardBookPage />,
+      },
+      {
+        path: "subjects/:id",
+        element: <DashboardSubjectPage />,
       },
       {
         path: "add-hadith-book",

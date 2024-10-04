@@ -13,10 +13,12 @@ import toast from "react-hot-toast";
 const Navbar = ({ handleChangeLanguage, lang, handleThemeChange, theme }) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, handleToggleRefetch } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleLogout = () => {
     logOut();
+    handleToggleRefetch();
     if (!user) {
       toast("Logged out successfully");
     }
@@ -49,13 +51,13 @@ const Navbar = ({ handleChangeLanguage, lang, handleThemeChange, theme }) => {
             </div>
             <div
               onClick={() => setShowDropdown(!showDropdown)}
-              className="w-8 h-8 border-2 cursor-pointer border-[#5ab270] rounded-full -mt-0.5 overflow-hidden"
+              className="w-8 h-8 border-2 relative cursor-pointer border-[#5ab270] rounded-full -mt-0.5 "
             >
-              <div>
+              <div className="rounded-full overflow-hidden">
                 <img src={profileImg} alt="profile-img" />
               </div>
               <div
-                className={`bg-white transition-all duration-200 dark:bg-white overflow-hidden text-stone-700 rounded-lg absolute z-[10] ${
+                className={`bg-white dark:bg-stone-900 dark:text-white shadow-xl transition-all duration-200  overflow-hidden text-stone-700 rounded-lg absolute z-[10] right-0 ${
                   showDropdown ? "translate-y-2" : "-translate-y-96"
                 }`}
               >
@@ -104,6 +106,7 @@ const Navbar = ({ handleChangeLanguage, lang, handleThemeChange, theme }) => {
           lang={lang}
           handleChangeLanguage={handleChangeLanguage}
           show={showSidebar}
+          handleLogout={handleLogout}
           handleShow={setShowSidebar}
         />
       </div>
