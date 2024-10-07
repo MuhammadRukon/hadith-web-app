@@ -1,11 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import useGetRole from "../../hooks/useGetRole";
-import { AuthContext } from "../../provider/AuthProvider";
 const NavItems = () => {
   const { lang } = useSelector((state) => state.language);
-  const { user } = useContext(AuthContext);
   const [links, setLinks] = useState([
     { title: "Home", titleBn: "হোম", path: "/" },
     { title: "Hadith", titleBn: "হাদিস", path: "/hadith" },

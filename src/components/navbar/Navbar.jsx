@@ -62,10 +62,13 @@ const Navbar = ({ handleChangeLanguage, lang, handleThemeChange, theme }) => {
                 }`}
               >
                 {user ? (
-                  <>
-                    <p className="hover:bg-stone-400 hover:text-white px-4 pt-1">
+                  <div className="flex flex-col">
+                    <Link
+                      to={"/profile"}
+                      className="hover:bg-stone-400 hover:text-white px-4 pt-1.5"
+                    >
                       profile
-                    </p>
+                    </Link>
                     <Link
                       to={"/bookmarks"}
                       className="hover:bg-stone-400 hover:text-white px-4"
@@ -78,7 +81,7 @@ const Navbar = ({ handleChangeLanguage, lang, handleThemeChange, theme }) => {
                     >
                       logout
                     </p>
-                  </>
+                  </div>
                 ) : (
                   <p
                     onClick={() => navigate("/login")}

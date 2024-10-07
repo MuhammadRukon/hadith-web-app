@@ -8,16 +8,24 @@ import { FaBookOpen } from "react-icons/fa6";
 import { GrChapterAdd } from "react-icons/gr";
 import Logo from "../../components/logo/Logo";
 import { BsFillChatLeftQuoteFill } from "react-icons/bs";
-import { isAnyOf } from "@reduxjs/toolkit";
+import useGetRole from "../../hooks/useGetRole";
+import { useContext } from "react";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isActive, setIsActive }) => {
+  const navigate = useNavigate();
+  const { logOut } = useContext(AuthContext);
   const handleLogout = () => {
-    console.log("logged out button clicked");
+    logOut();
+    navigate("/");
   };
 
   const handleToggle = () => {
     setIsActive(false);
   };
+
+  const role = useGetRole();
   return (
     <div>
       {/* Sidebar */}
@@ -42,27 +50,35 @@ const Sidebar = ({ isActive, setIsActive }) => {
           <div className="flex flex-col  justify-between px-4 flex-1 mt-6">
             <nav>
               {/* Menu Items */}
-              <MenuItem icon={AiFillHome} label="Home" address="/dashboard" />
-              <MenuItem
-                icon={FaBookOpen}
-                label="Add Book"
-                address="add-hadith-book"
-              />
-              <MenuItem
-                icon={GrChapterAdd}
-                label="Add Chapter"
-                address="add-chapter"
-              />
-              <MenuItem
-                icon={BsFillChatLeftQuoteFill}
-                label="Add Subject"
-                address="add-subject"
-              />
-              <MenuItem
-                icon={BsFillChatLeftQuoteFill}
-                label="Add Hadith"
-                address="add-hadith"
-              />
+              {role == "admin" ? (
+                <>
+                  <MenuItem
+                    icon={AiFillHome}
+                    label="Home"
+                    address="/dashboard"
+                  />
+                  <MenuItem
+                    icon={FaBookOpen}
+                    label="Add Book"
+                    address="add-hadith-book"
+                  />
+                  <MenuItem
+                    icon={GrChapterAdd}
+                    label="Add Chapter"
+                    address="add-chapter"
+                  />
+                  <MenuItem
+                    icon={BsFillChatLeftQuoteFill}
+                    label="Add Subject"
+                    address="add-subject"
+                  />
+                  <MenuItem
+                    icon={BsFillChatLeftQuoteFill}
+                    label="Add Hadith"
+                    address="add-hadith"
+                  />
+                </>
+              ) : null}
             </nav>
           </div>
         </div>
