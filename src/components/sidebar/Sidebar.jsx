@@ -61,7 +61,7 @@ const Sidebar = ({
           </li>
           {user ? (
             <>
-              <li>profile</li>
+              <Link to={"/profile"}>profile</Link>
               <Link to={"/bookmarks"}>bookmarks</Link>
               <li onClick={handleLogout}>logout</li>
             </>
