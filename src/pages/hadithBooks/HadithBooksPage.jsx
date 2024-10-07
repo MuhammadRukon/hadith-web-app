@@ -1,13 +1,33 @@
-import React from "react";
-import MainLayout from "../../layout/MainLayout";
+import { useSelector } from "react-redux";
+import Container from "../../components/container/Container";
+import BookTab from "../../components/HadithBookPage/BookTab";
+import PageContainer from "../../components/container/PageContainer";
+import { useEffect, useState } from "react";
+import { route } from "../../routes/Routes";
 
 const HadithBooksPage = () => {
+  const [books, setBooks] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`${route}/hadith-books`);
+      const data = await res.json();
+      if (data?.length > 0) {
+        setBooks(data);
+      } else {
+        setBooks([]);
+      }
+    };
+    fetchData();
+  }, []);
+  console.log(books, "books");
   return (
-    <MainLayout>
-      <div className="min-h-[calc(100vh-146px)] text-[#0e1037] dark:text-[#fefdf8] flex justify-center items-center text-6xl font-secondary">
-        Hadith books page is under development.
-      </div>
-    </MainLayout>
+    <PageContainer>
+      <Container>
+        {books.map((book) => (
+          <BookTab key={book._id} item={book} />
+        ))}
+      </Container>
+    </PageContainer>
   );
 };
 

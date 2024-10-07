@@ -1,10 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavItems from "../navbar/NavItems";
 import {
   MdCancelPresentation,
   MdOutlineDarkMode,
   MdOutlineLightMode,
 } from "react-icons/md";
+import { AuthContext } from "../../provider/AuthProvider";
+import { useContext } from "react";
 
 const Sidebar = ({
   show,
@@ -12,8 +14,11 @@ const Sidebar = ({
   handleChangeLanguage,
   lang,
   handleThemeChange,
+  handleLogout,
   theme,
 }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   return (
     <div
       className={`inline-block transition duration-200 ${
@@ -44,17 +49,25 @@ const Sidebar = ({
           >
             {theme == "light" ? (
               <>
-                {lang == "bn"? "অন্ধকার করুন":"Night mode"} <MdOutlineDarkMode size={20} />
+                {lang == "bn" ? "অন্ধকার করুন" : "Night mode"}{" "}
+                <MdOutlineDarkMode size={20} />
               </>
             ) : (
               <>
-          
-                {lang == "bn"? "আলোকিত করুন":"Light mode"}<MdOutlineLightMode size={20} />
+                {lang == "bn" ? "আলোকিত করুন" : "Light mode"}
+                <MdOutlineLightMode size={20} />
               </>
             )}
           </li>
-          <Link>{lang == 'bn'? "প্রোফাইল":"Profile"}</Link>
-          <button>{lang == 'bn'? "বেরিয়ে যান":"Logout"}</button>
+          {user ? (
+            <>
+              <Link to={"/profile"}>profile</Link>
+              <Link to={"/bookmarks"}>bookmarks</Link>
+              <li onClick={handleLogout}>logout</li>
+            </>
+          ) : (
+            <li onClick={() => navigate("/login")}>login</li>
+          )}
         </ul>
       </div>
     </div>
