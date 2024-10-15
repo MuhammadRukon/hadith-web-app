@@ -12,9 +12,10 @@ const BookPage = () => {
 
   const hadiths = useGetHadiths(bookId, chapterId);
   const books = useGetBooks();
-  useEffect(() => {
-    books?.length && setChapterId(books[0].chapters[0]?._id);
-  }, [books]);
+  // useEffect(() => {
+  //   books?.length && setChapterId(books[0].chapters[0]?._id);
+  // }, [books]);
+
   return (
     <PageContainer>
       <Container>

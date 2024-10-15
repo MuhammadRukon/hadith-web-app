@@ -20,7 +20,6 @@ const HadithCard = ({ hadith }) => {
   const dispatch = useDispatch();
   const location = useLocation();
   const showBookmark = !location.pathname.includes("dashboard");
-  console.log(showBookmark);
   useEffect(() => {
     if (res) {
       const bookmarksId = res.map((bookmark) => bookmark._id);

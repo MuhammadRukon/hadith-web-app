@@ -7,10 +7,14 @@ const BookTabWithCategory = ({ item, setBookId, setChapterId }) => {
 
   const { id } = useParams();
   const isSelected = id == item._id;
-
   useEffect(() => {
     setBookId(id);
   }, [id]);
+
+  useEffect(() => {
+    item?._id == id && setChapterId(item?.chapters[0]?._id);
+  }, [id]);
+
   return (
     <div
       className={`px-2 py-3 dark:text-[#fefdf8] text-[#0e1037] my-2 rounded-lg transition-all duration-150 ${
@@ -28,7 +32,7 @@ const BookTabWithCategory = ({ item, setBookId, setChapterId }) => {
           {item.name[lang]}
         </h2>
       </Link>
-      {isSelected && item?.chapters?.length > 0 && (
+      {isSelected && item?._id == id && item?.chapters?.length > 0 && (
         <select
           onChange={(e) => setChapterId(e.target.value)}
           className={`focus:outline-none capitalize px-3 py-2 mt-2 w-full text-xs md:text-sm bg-[#fcfaf6] dark:bg-[#100e0d] shadow-[0_2px_7px_rgba(0,0,0,0.19)] dark:shadow-none rounded-lg `}
