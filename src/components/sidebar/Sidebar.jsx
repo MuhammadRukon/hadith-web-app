@@ -35,17 +35,26 @@ const Sidebar = ({
 
         <ul className="flex flex-col gap-8 pb-5 pt-16 text-base font-semibold">
           <NavItems
-            onClick={() => {
+            handleClick={() => {
               handleShow(false);
             }}
           />
 
-          <li className="cursor-pointer" onClick={handleChangeLanguage}>
+          <li
+            className="cursor-pointer"
+            onClick={() => {
+              handleChangeLanguage();
+              handleShow(false);
+            }}
+          >
             {lang === "en" ? "বাংলা" : "English"}
           </li>
           <li
             className="ml-2 flex justify-center items-center gap-3"
-            onClick={handleThemeChange}
+            onClick={() => {
+              handleThemeChange();
+              handleShow(false);
+            }}
           >
             {theme == "light" ? (
               <>
@@ -61,9 +70,20 @@ const Sidebar = ({
           </li>
           {user ? (
             <>
-              <Link to={"/profile"}>profile</Link>
-              <Link to={"/bookmarks"}>bookmarks</Link>
-              <li onClick={handleLogout}>logout</li>
+              <Link onClick={() => handleShow(false)} to={"/profile"}>
+                profile
+              </Link>
+              <Link onClick={() => handleShow(false)} to={"/bookmarks"}>
+                bookmarks
+              </Link>
+              <li
+                onClick={() => {
+                  handleLogout();
+                  handleShow(false);
+                }}
+              >
+                logout
+              </li>
             </>
           ) : (
             <li onClick={() => navigate("/login")}>login</li>
