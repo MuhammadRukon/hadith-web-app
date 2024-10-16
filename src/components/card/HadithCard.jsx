@@ -11,14 +11,17 @@ import {
   setBookmarks,
 } from "../../redux/features/bookmarkSlice";
 import { useLocation } from "react-router-dom";
+import { AppContext } from "../../provider/AppContext";
 
 const HadithCard = ({ hadith }) => {
   const { lang } = useSelector((state) => state.language);
   const { bookmarks } = useSelector((state) => state.bookmarks);
   const { user, handleToggleRefetch, refetch } = useContext(AuthContext);
+  const { theme } = useContext(AppContext);
   const res = useGetBookmarks();
   const dispatch = useDispatch();
   const location = useLocation();
+
   const showBookmark = !location.pathname.includes("dashboard");
   useEffect(() => {
     if (res) {
@@ -53,11 +56,11 @@ const HadithCard = ({ hadith }) => {
 
   return (
     <div className="tracking-wider bg-[#fff9ef] shadow-[0_0_15px_rgba(0,0,0,0.1)] dark:bg-stone-900 dark:text-[#dadada] rounded-lg p-5 text-base lg:text-lg">
-      <p>
+      <p className="bg-[#fff3df] dark:bg-stone-800 w-fit py-2 px-4 rounded-lg">
         {lang === "en" && "Narrated by"} {hadith.narrator[lang]}{" "}
         {lang === "bn" && "থেকে বর্ণিত"}:
       </p>
-      <div className="flex flex-col-reverse lg:flex-row leading-relaxed gap-6 text-lg lg:text-xl my-4">
+      <div className="flex flex-col-reverse overflow-hidden lg:flex-row leading-relaxed gap-6 text-lg lg:text-xl my-4">
         <p className="text-left flex-1">{hadith.text[lang]}</p>
         <p className="text-right flex-1 text-xl lg:text-2xl">
           {hadith.text.ar}
@@ -67,7 +70,7 @@ const HadithCard = ({ hadith }) => {
         <p className="w-fit text-sm lg:text-base flex items-center gap-3">
           Authenticity:{" "}
           <span
-            className="py-0.5 px-2 text:xs lg:text-sm rounded-md text-black font-bold"
+            className="py-1 px-2 text:xs lg:text-xs rounded-md text-white font-bold"
             style={{ background: hadith.colorCode }}
           >
             {hadith?.authenticity[lang]}
@@ -78,7 +81,7 @@ const HadithCard = ({ hadith }) => {
             className="cursor-pointer"
             onClick={() => handleBookmark(hadith._id)}
           >
-            <FaHeart color={isBookmarked ? "#f3c556" : "white"} />
+            <FaHeart color={isBookmarked ? "red" : "#f3c556"} />
           </span>
         )}
       </div>
