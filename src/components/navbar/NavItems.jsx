@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import useGetRole from "../../hooks/useGetRole";
-const NavItems = () => {
+const NavItems = ({ handleClick }) => {
   const { lang } = useSelector((state) => state.language);
   const [links, setLinks] = useState([
     { title: "Home", titleBn: "হোম", path: "/" },
@@ -29,7 +29,7 @@ const NavItems = () => {
   return (
     <>
       {links.map((link, idx) => (
-        <NavLink to={link.path} key={idx}>
+        <NavLink onClick={handleClick} to={link.path} key={idx}>
           {lang == "en" ? link.title : link.titleBn}
         </NavLink>
       ))}

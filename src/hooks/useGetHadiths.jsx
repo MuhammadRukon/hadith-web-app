@@ -6,7 +6,7 @@ const useGetHadiths = (bookId, chapterId, refetch) => {
   const [hadiths, setHadiths] = useState([]);
   useEffect(() => {
     let query = "";
-    if (bookId && chapterId) {
+    if (bookId) {
       query = `?book_id=${bookId}&chapter_id=${chapterId}`;
     }
     console.log(query, "query");

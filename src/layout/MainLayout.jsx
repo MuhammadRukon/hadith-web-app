@@ -1,31 +1,13 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Navbar from "../components/navbar/Navbar";
 import Footer from "../components/footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { changeToBn, changeToEn } from "../redux/features/languageSlice";
 import { Outlet } from "react-router-dom";
+import { AppContext } from "../provider/AppContext";
 
 const MainLayout = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-  // dark theme logic
-  useEffect(() => {
-    const mainDiv = document.getElementById("root");
-    if (theme === "dark") {
-      mainDiv.classList.add("dark");
-      mainDiv.classList.remove("light");
-    } else {
-      mainDiv.classList.add("light");
-      mainDiv.classList.remove("dark");
-    }
-  }, [theme]);
-
-  const handleThemeChange = () => {
-    const newTheme = theme === "dark" ? "light" : "dark";
-    localStorage.setItem("theme", newTheme);
-    setTheme(newTheme);
-  };
-
+  const { theme, handleThemeChange } = useContext(AppContext);
   // bangla / english
   const { lang } = useSelector((state) => state.language);
   const dispatch = useDispatch();

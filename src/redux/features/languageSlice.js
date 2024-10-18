@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   lang: localStorage.getItem("lang") || "en",
-
 };
 const languageSlice = createSlice({
   name: "languages",
@@ -16,5 +15,5 @@ const languageSlice = createSlice({
     },
   },
 });
-export const  { changeToBn, changeToEn} = languageSlice.actions;
+export const { changeToBn, changeToEn } = languageSlice.actions;
 export default languageSlice.reducer;

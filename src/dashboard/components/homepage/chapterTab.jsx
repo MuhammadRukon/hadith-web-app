@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { route } from "../../../routes/Routes";
+import toast from "react-hot-toast";
 
 const ChapterTab = ({
   item,
@@ -17,10 +18,14 @@ const ChapterTab = ({
   const { lang } = useSelector((state) => state.language);
   useEffect(() => {
     setBookId(id);
-    setChapterId(item?.chapters[0]?._id);
+    item?._id == id && setChapterId(item?.chapters[0]?._id);
   }, [id]);
-
   const handleDeleteChapter = async (id) => {
+    if (item?.hadith_range?.en > 0) {
+      toast.error("Cannot delete. Chapter has hadith/s");
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -68,7 +73,7 @@ const ChapterTab = ({
               } text-xl md:text-2xl `}
               key={chapter?._id}
               onClick={() => {
-                console.log(chapter, item, "chapter, item");
+                handleDeleteChapter(chapter?._id);
               }}
             >
               <MdDeleteForever />
