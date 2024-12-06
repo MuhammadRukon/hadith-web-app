@@ -8,7 +8,8 @@ const AdminRoute = ({ children }) => {
 
   const role = useGetRole();
   console.log(role, "role");
-  if (loading || role == "") return <p>Loading...</p>;
+  if (loading || role == "")
+    return <span className="loading loading-bars loading-lg"></span>;
   if (role === "admin") return children;
   return <Navigate to="/" />;
 };

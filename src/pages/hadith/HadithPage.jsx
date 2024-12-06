@@ -12,30 +12,29 @@ const HadithPage = () => {
   const searchQuery = location.state?.searchQuery;
   const subjectQuery = location.state?.subject;
   const { lang } = useSelector((state) => state.language);
+  const [loading, setLoading] = useState(true);
   const [hadiths, setHadiths] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       let res;
       if (searchQuery) {
-        console.log("searchQuery");
         res = await axios(`${route}/search-hadith?q=${searchQuery}`);
       } else if (subjectQuery) {
-        console.log("categoryQuery");
         res = await axios(`${route}/hadiths?subject=${subjectQuery}`);
       } else {
-        console.log("all hadiths");
         res = await axios(`${route}/hadiths`);
       }
-
       if (res.status == 200) {
         setHadiths(res.data.response);
       } else {
         setHadiths([]);
       }
+      setLoading(false);
     };
     fetchData();
   }, []);
+  console.log(loading, "loding");
   return (
     <PageContainer>
       <Container>
@@ -46,7 +45,8 @@ const HadithPage = () => {
               : `Search results for "${location.state.searchQuery}"`}
           </h1>
         )}
-        <HadithWapper hadiths={hadiths} />
+
+        <HadithWapper hadiths={hadiths} loading={loading} />
       </Container>
     </PageContainer>
   );
