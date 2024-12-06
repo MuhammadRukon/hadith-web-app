@@ -7,6 +7,7 @@ import { route } from "../../routes/Routes";
 
 const HadithBooksPage = () => {
   const [books, setBooks] = useState([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`${route}/hadith-books`);
@@ -16,6 +17,7 @@ const HadithBooksPage = () => {
       } else {
         setBooks([]);
       }
+      setLoading(false);
     };
     fetchData();
   }, []);
@@ -23,9 +25,11 @@ const HadithBooksPage = () => {
   return (
     <PageContainer>
       <Container>
-        {books.map((book) => (
-          <BookTab key={book._id} item={book} />
-        ))}
+        {loading ? (
+          <span className="loading loading-bars loading-lg"></span>
+        ) : (
+          books.map((book) => <BookTab key={book._id} item={book} />)
+        )}
       </Container>
     </PageContainer>
   );

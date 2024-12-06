@@ -3,13 +3,13 @@ import { route } from "../routes/Routes";
 import { useEffect, useState } from "react";
 
 const useGetHadiths = (bookId, chapterId, refetch) => {
+  const [loading, setLoading] = useState(true);
   const [hadiths, setHadiths] = useState([]);
   useEffect(() => {
     let query = "";
     if (bookId) {
       query = `?book_id=${bookId}&chapter_id=${chapterId}`;
     }
-    console.log(query, "query");
     const fetchData = async () => {
       const res = await axios(`${route}/hadiths${query}`);
       if (res?.status === 200) {
@@ -17,10 +17,11 @@ const useGetHadiths = (bookId, chapterId, refetch) => {
       } else {
         setHadiths([]);
       }
+      setLoading(false);
     };
     fetchData();
   }, [bookId, chapterId, refetch]);
-  return hadiths;
+  return [hadiths, loading];
 };
 
 export default useGetHadiths;

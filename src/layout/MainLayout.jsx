@@ -28,7 +28,7 @@ const MainLayout = () => {
         handleThemeChange={handleThemeChange}
         theme={theme}
       />
-      <div className="mt-[65px] w-full dark-scroller bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">
+      <div className="pt-[65px] w-full dark-scroller bg-[#fefdf8] overflow-hidden dark:bg-[#312c2a]">
         <Outlet />
       </div>
       <Footer />
